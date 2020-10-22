@@ -35,7 +35,6 @@ function Nav (props) {
             <div className='navFlex'>
 
                 <Link className='p' to='/'>Home</Link>
-                <Link className='p' to='/about'>About</Link>
                 {props.isLoggedIn ? <p onClick={handleLogout} className='logout'>Logout</p> : <Link className='p' to='/login'>Login</Link>}
                 {props.isLoggedIn ? null : <Link className='p' to='/register'>Signup</Link>}
 

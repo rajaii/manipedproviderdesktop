@@ -61,7 +61,23 @@ async handleSubmit (e) {
     .then(async d => {
         if (d) {
         const registered =  await this.props.register(body)
-        if (registered.payload.response.data.err.detail === `Key (username)=(${this.state.username}) already exists.`) {
+        if (registered === undefined) {
+            window.confirm('Contratulations! You are now on your way to becoming a maniPed provider.  Continue your application on the next page.')
+            this.setState({
+                first_name: '',
+                last_name: '',
+                username: '',
+                email: '',
+                phone_number: '',
+                zipcode: '',
+                password: '',
+                verifyPassword: '',
+                validationError: {inner: []}
+            })
+            this.props.history.push('/secondsignuppage'); 
+        }
+
+         else if (registered.payload.response.data.detail === `Key (username)=(${this.state.username}) already exists.`) {
             window.confirm('The username chosen has already been taken.  Please choose another username, and try again...')
             this.setState({
                 first_name: '',
@@ -74,7 +90,7 @@ async handleSubmit (e) {
                 verifyPassword: '',
             })
             return
-        } else if (registered.payload.response.data.err.detail === `Key (email)=(${this.state.email}) already exists.`) {
+        } else if (registered.payload.response.data.detail === `Key (email)=(${this.state.email}) already exists.`) {
             window.confirm('There is already an account associated with that email.  Please choose another email, or click login and click forgot username or password for further instructions...')
             this.setState({
                 first_name: '',
@@ -85,9 +101,11 @@ async handleSubmit (e) {
                 zipcode: '',
                 password: '',
                 verifyPassword: '',
+                validationError: {inner: []}
             })
             return
-        } else if (registered.payload.response.data.err.detail ===  `Key (phone_number)=(${this.state.phone_number}) already exists.`) {
+            
+        } else if (registered.payload.response.data.detail ===  `Key (phone_number)=(${this.state.phone_number}) already exists.`) {
             window.confirm('There is already an account associated with that phone number.  Please choose another phone number, or click login and click forgot username or password for further instructions...')
             this.setState({
                 first_name: '',
@@ -98,23 +116,11 @@ async handleSubmit (e) {
                 zipcode: '',
                 password: '',
                 verifyPassword: '',
+                validationError: {inner: []}
             })
             return
-        } else {
-        this.setState({
-            first_name: '',
-            last_name: '',
-            username: '',
-            email: '',
-            phone_number: '',
-            zipcode: '',
-            password: '',
-            verifyPassword: '',
-        })
         } 
-        window.confirm('Thank you for signing up for maniPed for your cosmetic needs!  Please login to your email and verify your account...');
-        this.props.history.push('/login');
-    }
+    } 
     })
     .catch(err => {
         this.setState({
@@ -131,8 +137,8 @@ async handleSubmit (e) {
         return(
         <div>
             <form className='formCont' type='submit' onSubmit={this.handleSubmit}>
-            <h1 className="welcome">Welcome to maniPed!  Let's get you started with your new user account.</h1>
-            {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "First name is required").length > 0 ?  <div className="ErrorB">FIRST NAME IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
+            <h1 className="welcome">Welcome to maniPed Provider.  Sign up here to become a Provider.</h1>
+            {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "First name is required").length > 0 ?  <div className="ErrorB">FIRST NAME IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
                 <label>Enter first name here:</label>
                 <input 
                 type='text'
@@ -141,7 +147,7 @@ async handleSubmit (e) {
                 placeholder='first name'
                 onChange={this.handleChange}
                 />
-                 {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Last name is required").length > 0 ?  <div className="ErrorB">LAST NAME IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
+                 {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Last name is required").length > 0 ?  <div className="ErrorB">LAST NAME IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
                 <label>Enter last name here:</label>
                 <input 
                 type='text'
@@ -150,8 +156,8 @@ async handleSubmit (e) {
                 placeholder='last name'
                 onChange={this.handleChange}
                 />
-                 {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Username is required").length > 0 ?  <div className="ErrorB">USERNAME IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
-                 {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "username must be at least 5 characters").length > 0 ?  <div className="Error">USERNAME MUST BE AT LEAST 5 CHARACTERS</div> : null}
+                 {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Username is required").length > 0 ?  <div className="ErrorB">USERNAME IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
+                 {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "username must be at least 5 characters").length > 0 ?  <div className="Error">USERNAME MUST BE AT LEAST 5 CHARACTERS</div> : null}
                  <label>Enter username here (at least 5 characters):</label>
                 <input 
                 type='text'
@@ -160,8 +166,8 @@ async handleSubmit (e) {
                 placeholder='username'
                 onChange={this.handleChange}
                 />
-                {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Email is required").length > 0 ?  <div className="Error">EMAIL IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
-                 {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Please enter a valid email").length > 0 ?  <div className="Error">MUST BE A VALID EMAIL RE-ENTER AND CLICK SIGN UP</div> : null}
+                {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Email is required").length > 0 ?  <div className="Error">EMAIL IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
+                 {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Please enter a valid email").length > 0 ?  <div className="Error">MUST BE A VALID EMAIL RE-ENTER AND CLICK SIGN UP</div> : null}
                  <label>Enter email here:</label>
                 <input 
                 type='text'
@@ -170,8 +176,8 @@ async handleSubmit (e) {
                 placeholder='email'
                 onChange={this.handleChange}
                 />
-                 {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Phone number is required").length > 0 ?  <div className="Error">PHONE NUMBER IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
-                 {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Please enter a valid phone number").length > 0 ?  <div className="Error">MUST BE A VALID PHONE NUMBER RE-ENTER AND CLICK SIGN UP</div> : null}
+                 {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Phone number is required").length > 0 ?  <div className="Error">PHONE NUMBER IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
+                 {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Please enter a valid phone number").length > 0 ?  <div className="Error">MUST BE A VALID PHONE NUMBER RE-ENTER AND CLICK SIGN UP</div> : null}
                  <label>Enter phone number here:</label>
                 <input 
                 type='text'
@@ -180,8 +186,8 @@ async handleSubmit (e) {
                 placeholder='phone number'
                 onChange={this.handleChange}
                 />
-                 {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Zipcode is required").length > 0 ?  <div className="Error">ZIPCODE IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
-                 {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Must be valid zip code").length > 0 ?  <div className="Error">MUST BE A VALID ZIPCODE RE-ENTER AND CLICK SIGN UP</div> : null}
+                 {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Zipcode is required").length > 0 ?  <div className="Error">ZIPCODE IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
+                 {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Must be valid zip code").length > 0 ?  <div className="Error">MUST BE A VALID ZIPCODE RE-ENTER AND CLICK SIGN UP</div> : null}
                 <label>Enter zipcode here:</label>
                 <input 
                 type='text'
@@ -192,8 +198,8 @@ async handleSubmit (e) {
                 />
                  <label>Enter password here:</label>
                  <p className='p'>Must have at least 8 1 upper case letter, at least 1 lower case letter, at least 1 number, and at least 1 special character:</p>
-                 {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Password is required").length > 0 ?  <div className="ErrorB">PASSWORD IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
-                 {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Password must have at least 8 1 upper case letter, at least 1 lower case letter, at least 1 number, and at least 1 special character ").length > 0 ?  <div className="Error">REPEAT: USE AT LEAST 1 UPPER CASE, 1 LOWER CASE, 1 NUMBER, 1 SPECIAL CHARACTER RE-ENTER AND CLICK SIGN UP</div> : null}
+                 {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Password is required").length > 0 ?  <div className="ErrorB">PASSWORD IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
+                 {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Password must have at least 8 1 upper case letter, at least 1 lower case letter, at least 1 number, and at least 1 special character ").length > 0 ?  <div className="Error">REPEAT: USE AT LEAST 1 UPPER CASE, 1 LOWER CASE, 1 NUMBER, 1 SPECIAL CHARACTER RE-ENTER AND CLICK SIGN UP</div> : null}
                 <input 
                 type='password'
                 name='password'
@@ -201,7 +207,7 @@ async handleSubmit (e) {
                 placeholder='password'
                 onChange={this.handleChange}
                 />
-                {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Passwords must match").length > 0 ?  <div className="ErrorB">PASSWORDS MUST MATCH, RE-ENTER AND CLICK SIGN UP</div> : null} 
+                {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Passwords must match").length > 0 ?  <div className="ErrorB">PASSWORDS MUST MATCH, RE-ENTER AND CLICK SIGN UP</div> : null} 
                  <label>Verify password here:</label>
                 <input 
                 type='password'

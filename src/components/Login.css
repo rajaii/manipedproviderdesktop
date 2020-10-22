@@ -37,7 +37,7 @@ button {
         color: white;
         text-shadow: 0 0 10px black;
         -webkit-text-stroke: 1px;
-        -webkit-text-stroke-color: red;
+        -webkit-text-stroke-color: #dba622;
     }
 
 

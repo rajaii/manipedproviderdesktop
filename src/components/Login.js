@@ -68,7 +68,7 @@ class Login extends React.Component {
         return (
         <div className='loginCont'>
             <form className='loginCont' type='submit' onSubmit={this.handleSubmit}>
-                <h1 className="existing">Existing Users Sign In Here:</h1>
+                <h1 className="existing">Login here:</h1>
                 {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Username is required").length > 0 ?  <div className="ErrorB">USERNAME IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
                 <label>Enter username here:</label>
                 <input 

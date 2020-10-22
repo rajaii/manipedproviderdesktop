@@ -1,7 +1,8 @@
 color theme:
 black: 	#0b0b0b,
 gold: #dba622,
-white: #f6f6f6
+white: #f6f6f6,
+red: #670404
 
 make barebones and boilerplate 
 bring in auth actions/reducers, and clean files
@@ -12,3 +13,5 @@ make endpoints for forgotusername and verify and forgotpassword functionality
     api/auth/resetproviderpasswordverify/:userId/:verhas
     api/auth/verifyuser/:userId/:verhash
 make landing page with only login/register or link to user app couple of pictures
+
+after homepage and login and register are functional, make all components responsive at 300, 400, 500, 600, 700, 800, 900, 1000, 1200 px
