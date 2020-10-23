@@ -4,14 +4,17 @@ gold: #dba622,
 white: #f6f6f6,
 red: #670404
 
-make barebones and boilerplate 
-bring in auth actions/reducers, and clean files
-make endpoints for forgotusername and verify and forgotpassword functionality
-    api/auth/resendproviderverification
-    api/auth/forgotproviderpassword
-    api/auth/forgotproviderusername
-    api/auth/resetproviderpasswordverify/:userId/:verhas
-    api/auth/verifyuser/:userId/:verhash
-make landing page with only login/register or link to user app couple of pictures
+    =>make a component for services and pricing that will have an input for service and an input for pricing for all services offered.  Have an
+    add button that adds more components if they have more services to add.  can do this for nails, hair etc.  db will
+    have to be adjuested with a table that has nails services and pricing linked to providers with colums for price and service. 
+    FE user can pull pricing out of there.  
 
-after homepage and login and register are functional, make all components responsive at 300, 400, 500, 600, 700, 800, 900, 1000, 1200 px
+    make endpoints for forgotusername and verify and forgotpassword functionality
+        api/auth/resendproviderverification
+        api/auth/forgotproviderpassword
+        api/auth/forgotproviderusername
+        api/auth/resetproviderpasswordverify/:userId/:verhas
+        api/auth/verifyuser/:userId/:verhash
+    make landing page with only login/register or link to user app couple of pictures
+
+    after homepage and login and register are functional, make all components responsive at 300, 400, 500, 600, 700, 800, 900, 1000, 1200 px

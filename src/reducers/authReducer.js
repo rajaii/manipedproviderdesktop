@@ -128,7 +128,7 @@ import {LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, REGISTER_START, REGISTER_SUCC
             case REGISTER_SUCCESS:
                 return {
                     ...state,
-                    successfulRegister: true,
+                    successfulRegister: action.payload,
                     registering: false
                 }
             case REGISTER_FAILURE:
