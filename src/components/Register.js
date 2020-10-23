@@ -60,8 +60,9 @@ async handleSubmit (e) {
     registrationSchema.validate(this.state, {abortEarly: false})
     .then(async d => {
         if (d) {
-        const registered =  await this.props.register(body)
+        const registered =  await this.props.register(body);
         if (registered === undefined) {
+            localStorage.setItem('uID', this.props.successfulRegister.data[0].id);
             window.confirm('Contratulations! You are now on your way to becoming a maniPed provider.  Continue your application on the next page.')
             this.setState({
                 first_name: '',
