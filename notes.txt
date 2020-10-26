@@ -4,10 +4,14 @@ gold: #dba622,
 white: #f6f6f6,
 red: #670404
 
-    =>make a component for services and pricing that will have an input for service and an input for pricing for all services offered.  Have an
+    => finish the helpers and routers for the nails and massage and hair services
+    
+    make a component for services and pricing that will have an input for service and an input for pricing for all services offered.  Have an
     add button that adds more components if they have more services to add.  can do this for nails, hair etc.  db will
     have to be adjuested with a table that has nails services and pricing linked to providers with colums for price and service. 
     FE user can pull pricing out of there.  
+
+    add in the cloudinary so can upload image in secondSignupPage
 
     make endpoints for forgotusername and verify and forgotpassword functionality
         api/auth/resendproviderverification
