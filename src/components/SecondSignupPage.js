@@ -6,14 +6,23 @@ import './Register.css';
 class SecondSignupPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            
+        };
+    }
+
+    handleChange = e => {
+        this.setState({
+            ...this.state,
+            [e.target.name]: e.target.value
+        })
     }
 
     render() {
         return (
             <div>
                 <form className='formCont' type='submit' onSubmit={this.handleSubmit}>
-            <h1 className="welcome">Please continue with your application</h1>
+            <h1 className="welcome">Please continue with your application and finish your profile here:</h1>
            
                 <label>Enter your address here:</label>
                 <input 
@@ -33,7 +42,7 @@ class SecondSignupPage extends React.Component {
                 onChange={this.handleChange}
                 />
                
-                 <label>Describe yourself for your future clients:</label>
+                 <label>Describe yourself/your work for your future clients:</label>
                 <textarea 
                 type='text'
                 name='username'
