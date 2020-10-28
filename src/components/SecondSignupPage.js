@@ -18,7 +18,24 @@ class SecondSignupPage extends React.Component {
         })
     }
 
+    showWidget = widget => {
+        widget.open()
+    }
+
     render() {
+        const userId = localStorage.getItem('uID');
+        const widget = window.cloudinary.createUploadWidget({
+            cloudName: 'maniped', 
+            uploadPreset: 'maniped_preset',
+            cropping: true}, (error, result) => { 
+              if (!error && result && result.event === "success") { 
+                console.log('Done! Here is the image info: ', result.info); 
+                console.log(result.info.secure_url)
+                const body = {profile_img_url: result.info.secure_url}
+                // this.props.editProfile(userId, body);
+              }
+            }
+          )
         return (
             <div>
                 <form className='formCont' type='submit' onSubmit={this.handleSubmit}>
@@ -42,7 +59,7 @@ class SecondSignupPage extends React.Component {
                 onChange={this.handleChange}
                 />
                
-                 <label>Describe yourself/your work for your future clients:</label>
+                 <label>Describe yourself/your work for your clients:</label>
                 <textarea 
                 type='text'
                 name='username'
@@ -52,55 +69,18 @@ class SecondSignupPage extends React.Component {
                 rows='10'
                 cols='50'
                 />
-                <h3>Here You will be entering your pricing and services for nails.</h3>
                
-                 <label>Enter your nails service:</label>
-                <input 
-                type='text'
-                name='email'
-                value={this.state.email}
-                placeholder='email'
-                onChange={this.handleChange}
-                />
+               <div className='photoWrap'>
+
+                    <div>
+                        <p>Photo:</p>
+                        <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload Photo</button>
+                    </div>
+
+                    <img className='editProfileImg' src={`${this.props.profile_img_url}`} />
+            </div>
                 
-                 <label>Enter your desired pricing for hair services:</label>
-                <input 
-                type='text'
-                name='phone_number'
-                value={this.state.phone_number}
-                placeholder='phone number'
-                onChange={this.handleChange}
-                />
-                 
-                <label>Enter your desired pricing forhere:</label>
-                <input 
-                type='text'
-                name='zipcode'
-                value={this.state.zipcode}
-                placeholder='zipcode'
-                onChange={this.handleChange}
-                />
-                 <label>Enter password here:</label>
-                 <p className='p'>Must have at least 8 1 upper case letter, at least 1 lower case letter, at least 1 number, and at least 1 special character:</p>
-                
-                <input 
-                type='password'
-                name='password'
-                value={this.state.password}
-                placeholder='password'
-                onChange={this.handleChange}
-                />
-               
-                 <label>Verify password here:</label>
-                <input 
-                type='password'
-                name='verifyPassword'
-                value={this.state.verifyPassword}
-                placeholder='verify password'
-                onChange={this.handleChange}
-                />
-                
-                <button>Sign Up</button>
+                <button>Submit</button>
                 {this.props.registering === true ? <div className='lds-hourglass'>Registering...</div> : null}
             
             </form>

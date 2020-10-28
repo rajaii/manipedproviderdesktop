@@ -5,6 +5,17 @@ white: #f6f6f6,
 red: #670404
 
     => 
+    FLOW => REgister, verify email, login, secondsignuppage, addservices, when all done (check in state), dashboard.
+
+    task 1: image setup
+    PSeudo for cloudinary image setup for secondsignupPage
+        wire the cloudinary component
+            BUG: put in on secondSignupPage but is not loading when button clicked
+        make action that will put the provider profile with the 
+
+
+
+    Task 2: add pricing and services
     PSEUDO for how to add new components for each service/price the provider wants to add:
     //make a state value of {
         nails_services: 0,
@@ -18,7 +29,17 @@ red: #670404
     //make 1 component for all 3 but pass down the type of service as a prop so the messages are different.
     //make an action for edit service and dynamically add the endpoint by passing it in the fnc and then in the url so can use 1 action for all 3
     
-    
+    Task 3: fully wire through signup and login verifications and then wire through the routing on reg and test the above compoennts and actions
+    with a logged in user:
+    c
+    make it so users get verified immediately after signup, and then login and if the fields are null are routed to secondsignuppage where they will 
+    enter the pics and other fields.  After that to the Addservice page where they can add the services and pricing.  After they have at least 1 s&p
+    sedn to dashboard
+
+    !!after ^ log in to users is bugged with jwt malformed, fix this ongoin issue!!!!!!!!!!!!!!!!!!! 
+
+
+================================================================================================================================================
     make a component for services and pricing that will have an input for service and an input for pricing for all services offered.  Have an
     add button that adds more components if they have more services to add.  can do this for nails, hair etc.  db will
     have to be adjuested with a table that has nails services and pricing linked to providers with colums for price and service. 
