@@ -4,7 +4,20 @@ gold: #dba622,
 white: #f6f6f6,
 red: #670404
 
-    => finish the helpers and routers for the nails and massage and hair services
+    => 
+    PSEUDO for how to add new components for each service/price the provider wants to add:
+    //make a state value of {
+        nails_services: 0,
+        hair_service: 0,
+        massage_service: 0
+
+    }
+    //make a button in each section where they can add the specific service type
+    //if they click the buttton, the state value increments
+    //in render loop each section up to this.state.nail_service (ex) and render a component every time
+    //make 1 component for all 3 but pass down the type of service as a prop so the messages are different.
+    //make an action for edit service and dynamically add the endpoint by passing it in the fnc and then in the url so can use 1 action for all 3
+    
     
     make a component for services and pricing that will have an input for service and an input for pricing for all services offered.  Have an
     add button that adds more components if they have more services to add.  can do this for nails, hair etc.  db will
