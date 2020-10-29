@@ -19,14 +19,14 @@ class SecondSignupPage extends React.Component {
     }
 
     showWidget = widget => {
-        widget.open()
+        widget.open();
     }
 
     render() {
         const userId = localStorage.getItem('uID');
         const widget = window.cloudinary.createUploadWidget({
             cloudName: 'maniped', 
-            uploadPreset: 'maniped_preset',
+            uploadPreset: 'manipedProvider_preset',
             cropping: true}, (error, result) => { 
               if (!error && result && result.event === "success") { 
                 console.log('Done! Here is the image info: ', result.info); 
@@ -44,44 +44,63 @@ class SecondSignupPage extends React.Component {
                 <label>Enter your address here:</label>
                 <input 
                 type='text'
-                name='first_name'
-                value={this.state.first_name}
-                placeholder='first name'
+                name='address'
+                value={this.state.address}
+                placeholder='address'
                 onChange={this.handleChange}
                 />
                 
                 <label>Enter your profile header here:</label>
                 <input 
                 type='text'
-                name='last_name'
-                value={this.state.last_name}
-                placeholder='last name'
+                name='header'
+                value={this.state.header}
+                placeholder='header'
                 onChange={this.handleChange}
                 />
                
                  <label>Describe yourself/your work for your clients:</label>
                 <textarea 
                 type='text'
-                name='username'
-                value={this.state.username}
-                placeholder='username'
+                name='about me'
+                value={this.state.about_me}
+                placeholder='describe yourself'
                 onChange={this.handleChange}
                 rows='10'
                 cols='50'
                 />
+
                
                <div className='photoWrap'>
 
                     <div>
-                        <p>Photo:</p>
+                        <p>Please upload a professional photo:</p>
                         <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload Photo</button>
                     </div>
 
-                    <img className='editProfileImg' src={`${this.props.profile_img_url}`} />
+                    
             </div>
                 
-                <button>Submit</button>
-                {this.props.registering === true ? <div className='lds-hourglass'>Registering...</div> : null}
+            <div className='photoWrap'>
+
+            <div>
+                <p>Please upload a photo identification (driver's license, photo id, or passport):</p>
+                <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload ID</button>
+            </div>
+
+            
+            </div>
+
+            <div>
+            <div>
+                <p>Please upload a photo of your respective certification:</p>
+                <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload Certification</button>
+            </div>
+
+            
+            </div> 
+            
+                
             
             </form>
             </div>
