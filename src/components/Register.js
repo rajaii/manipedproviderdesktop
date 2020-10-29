@@ -61,8 +61,8 @@ async handleSubmit (e) {
     .then(async d => {
         if (d) {
         const registered =  await this.props.register(body);
+       
         if (registered === undefined) {
-            localStorage.setItem('uID', this.props.successfulRegister.data[0].id);
             window.confirm('Contratulations! You are now on your way to becoming a maniPed provider.  Continue your application on the next page.')
             this.setState({
                 first_name: '',
@@ -76,8 +76,8 @@ async handleSubmit (e) {
             })
             this.props.history.push('/secondsignuppage'); 
         }
-
-         else if (registered.payload.response.data.detail === `Key (username)=(${this.state.username}) already exists.`) {
+        
+         if (registered.payload.response.data.detail === `Key (username)=(${this.state.username}) already exists.`) {
             window.confirm('The username chosen has already been taken.  Please choose another username, and try again...')
             this.setState({
                 username: '',
@@ -96,6 +96,19 @@ async handleSubmit (e) {
                 phone_number: '', 
             })
             return
+        } else {
+            window.confirm('Contratulations! You are now on your way to becoming a maniPed provider.  Continue your application on the next page.')
+            this.setState({
+                first_name: '',
+                last_name: '',
+                username: '',
+                email: '',
+                phone_number: '',
+                zipcode: '',
+                password: '',
+                verifyPassword: '',
+            })
+            this.props.history.push('/secondsignuppage'); 
         } 
     } 
     })

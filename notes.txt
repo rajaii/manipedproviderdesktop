@@ -5,7 +5,9 @@ white: #f6f6f6,
 red: #670404
 
     => 
-    FLOW => REgister, verify email, login, secondsignuppage, addservices, when all done (check in state), dashboard.
+    FLOW => REgister, apply (secondsignupPage sending to a apply route that will only put the provider info if all the info is added
+    and then they get verify links etc at this point after which they can log in and add their protfolio pics etc) verify email, login, 
+    secondsignuppage, addservices, when all done (check in state), dashboard.
 
     task 1: image setup
     PSeudo for cloudinary image setup for secondsignupPage

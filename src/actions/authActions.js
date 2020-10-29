@@ -26,6 +26,9 @@ export const register = creds => dispatch => {
     dispatch({type: REGISTER_START});
     return axios.post('http://localhost:4000/api/auth/register/providers', creds)
     .then(res => {
+        localStorage.setItem('token', res.data.jwt_token);
+        localStorage.setItem('uID', res.data.id);
+        localStorage.setItem('uName', res.data.name);
         dispatch({type: REGISTER_SUCCESS, payload: res})
     })
     .catch(err => dispatch({type: REGISTER_FAILURE, payload: err}))
