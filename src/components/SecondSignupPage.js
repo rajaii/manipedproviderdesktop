@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { editProfile } from '../actions/appActions.js'; 
 import './Register.css';
 
 class SecondSignupPage extends React.Component {
@@ -24,6 +25,7 @@ class SecondSignupPage extends React.Component {
 
     render() {
         const userId = localStorage.getItem('uID');
+        console.log(window.cloudinary);
         const widget = window.cloudinary.createUploadWidget({
             cloudName: 'maniped', 
             uploadPreset: 'manipedProvider_preset',
@@ -32,12 +34,14 @@ class SecondSignupPage extends React.Component {
                 console.log('Done! Here is the image info: ', result.info); 
                 console.log(result.info.secure_url)
                 const body = {profile_img_url: result.info.secure_url}
-                // this.props.editProfile(userId, body);
+                this.props.editProfile(userId, body);
               }
             }
           )
         return (
+            
             <div>
+                
                 <form className='formCont' type='submit' onSubmit={this.handleSubmit}>
             <h1 className="welcome">Please continue with your application and finish your profile here:</h1>
            
@@ -68,44 +72,51 @@ class SecondSignupPage extends React.Component {
                 onChange={this.handleChange}
                 rows='10'
                 cols='50'
-                />
-
-               
-               <div className='photoWrap'>
-
-                    <div>
-                        <p>Please upload a professional photo:</p>
-                        <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload Photo</button>
-                    </div>
-
-                    
-            </div>
-                
-            <div className='photoWrap'>
-
-            <div>
-                <p>Please upload a photo identification (driver's license, photo id, or passport):</p>
-                <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload ID</button>
-            </div>
-
-            
-            </div>
-
-            <div>
-            <div>
-                <p>Please upload a photo of your respective certification:</p>
-                <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload Certification</button>
-            </div>
-
-            
-            </div> 
-            
-                
+                />   
             
             </form>
+
+            <div className='cloudWrap'>
+                <div className='photoWrap'>
+
+                
+                <div>
+                    <p>Please upload a professional photo:</p>
+                    <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload Photo</button>
+                </div>
+
+
+                </div>
+
+
+                <div className='photoWrap'>
+
+                <div>
+                <p>Please upload a photo identification (driver's license, photo id, or passport):</p>
+                <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload ID</button>
+                </div>
+
+
+                </div>
+
+                <div className='photoWrap'>
+                <div>
+                <p>Please upload a photo of your respective certification:</p>
+                <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload Certification</button>
+                </div>
+
+
+                </div>
+            </div> 
             </div>
         )
     }
 }
 
-export default SecondSignupPage;
+const mapStateToProps = state => {
+    return {
+        usersInfo: state.providerUserInfoReducer.usersInfo
+    }
+}
+
+export default connect(mapStateToProps, { editProfile })(SecondSignupPage);
