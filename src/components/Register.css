@@ -80,3 +80,15 @@
      display: flex;
      flex-direction: row;
    }
+
+   .cloudWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+
+   .photoWrap {
+     width: 100%;
+     display: flex;
+    justify-content: center;
+   }

@@ -24,6 +24,7 @@ class SecondSignupPage extends React.Component {
 
     render() {
         const userId = localStorage.getItem('uID');
+        console.log(window.cloudinary);
         const widget = window.cloudinary.createUploadWidget({
             cloudName: 'maniped', 
             uploadPreset: 'manipedProvider_preset',
@@ -37,7 +38,9 @@ class SecondSignupPage extends React.Component {
             }
           )
         return (
+            
             <div>
+                
                 <form className='formCont' type='submit' onSubmit={this.handleSubmit}>
             <h1 className="welcome">Please continue with your application and finish your profile here:</h1>
            
@@ -68,41 +71,42 @@ class SecondSignupPage extends React.Component {
                 onChange={this.handleChange}
                 rows='10'
                 cols='50'
-                />
-
-               
-               <div className='photoWrap'>
-
-                    <div>
-                        <p>Please upload a professional photo:</p>
-                        <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload Photo</button>
-                    </div>
-
-                    
-            </div>
-                
-            <div className='photoWrap'>
-
-            <div>
-                <p>Please upload a photo identification (driver's license, photo id, or passport):</p>
-                <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload ID</button>
-            </div>
-
-            
-            </div>
-
-            <div>
-            <div>
-                <p>Please upload a photo of your respective certification:</p>
-                <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload Certification</button>
-            </div>
-
-            
-            </div> 
-            
-                
+                />   
             
             </form>
+
+            <div className='cloudWrap'>
+                <div className='photoWrap'>
+
+                
+                <div>
+                    <p>Please upload a professional photo:</p>
+                    <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload Photo</button>
+                </div>
+
+
+                </div>
+
+
+                <div className='photoWrap'>
+
+                <div>
+                <p>Please upload a photo identification (driver's license, photo id, or passport):</p>
+                <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload ID</button>
+                </div>
+
+
+                </div>
+
+                <div className='photoWrap'>
+                <div>
+                <p>Please upload a photo of your respective certification:</p>
+                <button onClick={() => this.showWidget(widget)} className="cloudinary-button">Upload Certification</button>
+                </div>
+
+
+                </div>
+            </div> 
             </div>
         )
     }
