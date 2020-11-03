@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { editProfile } from '../actions/appActions.js'; 
 import './Register.css';
 
 class SecondSignupPage extends React.Component {
@@ -33,7 +34,7 @@ class SecondSignupPage extends React.Component {
                 console.log('Done! Here is the image info: ', result.info); 
                 console.log(result.info.secure_url)
                 const body = {profile_img_url: result.info.secure_url}
-                // this.props.editProfile(userId, body);
+                this.props.editProfile(userId, body);
               }
             }
           )
@@ -112,4 +113,10 @@ class SecondSignupPage extends React.Component {
     }
 }
 
-export default SecondSignupPage;
+const mapStateToProps = state => {
+    return {
+        usersInfo: state.providerUserInfoReducer.usersInfo
+    }
+}
+
+export default connect(mapStateToProps, { editProfile })(SecondSignupPage);

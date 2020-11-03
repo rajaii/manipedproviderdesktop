@@ -11,13 +11,12 @@ red: #670404
     1)set up secondSignup page component and actions, reducers, tweak the hlpers/routes to add the necessary data to json to give to FE
      
          task 1: image setup
-            PSeudo for cloudinary image setup for secondsignupPage
-            wire the cloudinary component
-            BUG: put in on secondSignupPage but is not loading when button clicked
-            make action that will put the provider profile with the 
+            make the cloudinary widget's edit action call for each button go to the proper place in db line 36 secondsignjuppage.js
 
-            action to put provider profile so can add license and photo and credentials, in the cloud  and then the other stuff when submitting 
-            second signup page
+            finish adding the other things that secondsignup page will need for the profile, and then add the local state and validation,
+            and the handlechange and handlesubmit and button to edit profile with the entered info.  
+            
+            Then test the component to make sure all is wired actions and reducers included  
 
     2)then make the componenets for adding services and pricing and actions reducers and tweak the helpers to give back the new table sections
     to fe in the json 
