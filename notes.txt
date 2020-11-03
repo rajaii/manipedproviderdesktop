@@ -8,6 +8,10 @@ red: #670404
     FLOW => REgister,  on registed verify email, login, then after activation 
     secondsignuppage, and then after addservices, then after activate let them take bookings. 
 
+    !!=> first fix the headers here as done in client until find out about bad auth headers from chrome
+    then fix both protected routes to have the logic in pseudo line 11-14 in protectedrRoute.json
+    on client app
+    
     1)set up secondSignup page component and actions, reducers, tweak the hlpers/routes to add the necessary data to json to give to FE
      
          task 1: image setup
