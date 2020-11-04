@@ -5,16 +5,13 @@ white: #f6f6f6,
 red: #670404
 
     => 
-    FLOW => REgister,  on registed verify email, login, then after activation 
-    secondsignuppage, and then after addservices, then after activate let them take bookings. 
+    FLOW => REgister,  on registed verify email, login, then after verification 
+    secondsignuppage, and then predash (addservices and add pics of work), then a message displays that they have successfully applied and lock them out until admin 
+    activates them and then they can log in which goes to dash and let them take bookings. 
     
-    1)set up secondSignup page component and actions, reducers, tweak the hlpers/routes to add the necessary data to json to give to FE
-     
-         task 1: image setup
-            make the cloudinary widget's edit action call for each button go to the proper place in db line 36 secondsignjuppage.js
-
-            finish adding the other things that secondsignup page will need for the profile, and then add the local state and validation,
-            and the handlechange and handlesubmit and button to edit profile with the entered info.  
+    1)
+      secondSignupPage:
+            validation and handlesubmit and button to edit profile with the entered info.  
             
             Then test the component to make sure all is wired actions and reducers included  
 
@@ -48,7 +45,7 @@ red: #670404
         enter the pics and other fields.  After that to the Addservice page where they can add the services and pricing.  After they have at least 1 s&p
         sedn to dashboard
 
-        !!after ^ log in to users is bugged with jwt malformed, fix this ongoin issue!!!!!!!!!!!!!!!!!!! 
+        
 
 
 
@@ -77,3 +74,9 @@ red: #670404
     make landing page with only login/register or link to user app couple of pictures
 
     after homepage and login and register are functional, make all components responsive at 300, 400, 500, 600, 700, 800, 900, 1000, 1200 px
+    and for user desktop too
+
+    make an error come back to the user every time the actions err out and ie backend doesn't do what you want so they re-do whatever wasn't doesn
+    way more error messages are needed id in the logic of every actions error.
+
+    Go through every file in every app and make sure all comments are handled, and all potential errors are handled 

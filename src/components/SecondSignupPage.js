@@ -1,8 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as yup from 'yup';
 
 import { editProfile } from '../actions/appActions.js'; 
 import './Register.css';
+
+let applicationSchema = yup.object().shape({
+    address: yup.string().required('Address is required'),
+    header: yup.string().required('Header is required'),
+    about_me: yup.string().required('About me is required'),
+  });
 
 class SecondSignupPage extends React.Component {
     constructor(props) {
@@ -10,8 +17,10 @@ class SecondSignupPage extends React.Component {
         this.state = {
             address: '',
             header: '',
-            about_me: ''
+            about_me: '',
+            validationError: {inner: []}
         };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange = e => {
@@ -21,13 +30,44 @@ class SecondSignupPage extends React.Component {
         })
     }
 
+   async handleSubmit (e) {
+        e.preventDefault();
+        const body = {
+            address: this.state.address,
+            header: this.state.header,
+            about_me: this.state.about_me
+        };
+        applicationSchema.validate(this.state, {abortEarly: false})
+        .then(async r => {
+            if (r) {
+                const id = localStorage.getItem('uID');
+                this.props.editProfile(id, body);
+                this.setState({
+                    address: '',
+                    header: '',
+                    about_me: ''
+                });
+                window.confirm('Thank you for signing up to be a maniPed pro.  Now you can add your services and pricing and also a portfolio of your work pictures for your profile.');
+                this.props.history.push('/predash');
+            }
+        })
+        .catch(err => {
+            this.setState({
+                validationError: err
+            })
+        })
+        
+
+
+        
+    }
+
     showWidget = widget => {
         widget.open();
     }
 
     render() {
         const userId = localStorage.getItem('uID');
-        console.log(window.cloudinary);
         const photoWidget = window.cloudinary.createUploadWidget({
             cloudName: 'maniped', 
             uploadPreset: 'manipedProvider_preset',
@@ -37,6 +77,8 @@ class SecondSignupPage extends React.Component {
                 console.log(result.info.secure_url)
                 const body = {profile_img_url: result.info.secure_url}
                 this.props.editProfile(userId, body);
+                //potential error needed to be give to user here if editProfile does not work
+                window.confirm('Thank you for adding your photo.  Please continue with your application');
               }
             }
           )
@@ -50,6 +92,8 @@ class SecondSignupPage extends React.Component {
                 console.log(result.info.secure_url)
                 const body = {identification: result.info.secure_url}
                 this.props.editProfile(userId, body);
+                //potential error needed to be give to user here if editProfile does not work
+                window.confirm('Thank you for adding your identification.  Please continue with your application');
               }
             }
           )
@@ -63,6 +107,8 @@ class SecondSignupPage extends React.Component {
                 console.log(result.info.secure_url)
                 const body = {certification: result.info.secure_url}
                 this.props.editProfile(userId, body);
+                //potential error needed to be give to user here if editProfile does not work
+                window.confirm('Thank you for adding your certification.  Please continue with your application');
               }
             }
           )
@@ -116,6 +162,7 @@ class SecondSignupPage extends React.Component {
                 placeholder='address'
                 onChange={this.handleChange}
                 />
+                {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Address is required").length > 0 ?  <div className="ErrorB">ADDRESS IS REQUIRED RE-ENTER AND CLICK SUBMIT</div> : null}
                 
                 <label>Enter your profile header here:</label>
                 <input 
@@ -125,6 +172,8 @@ class SecondSignupPage extends React.Component {
                 placeholder='header'
                 onChange={this.handleChange}
                 />
+                {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "Header is required").length > 0 ?  <div className="ErrorB">HEADER IS REQUIRED RE-ENTER AND CLICK SUBMIT</div> : null}
+                
                
                  <label>Describe yourself/your work for your clients:</label>
                 <textarea 
@@ -135,8 +184,10 @@ class SecondSignupPage extends React.Component {
                 onChange={this.handleChange}
                 rows='10'
                 cols='50'
-                />   
-                <button>Submit</button>
+                /> 
+                 {this.state.validationError.inner != undefined && this.state.validationError.inner.filter(i => i.message === "About me is required").length > 0 ?  <div className="ErrorB">ABOUT ME IS REQUIRED RE-ENTER AND CLICK SUBMIT</div> : null}
+                  
+                <button onClick={this.handleSubmit}>Submit</button>
             </form>
 
            
