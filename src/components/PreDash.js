@@ -55,7 +55,7 @@ class PreDash extends React.Component {
                     <button name='nails_services' onClick={this.handleAdd}>Add New Nails Service</button>
                 </div>
                 {this.state.nails_services.map(i => {
-                    console.log('hellp')
+                    
                     return <ServicesAndPricing service='nails'/>
                 })}
                 
@@ -65,7 +65,7 @@ class PreDash extends React.Component {
                 </div>
                 {this.state.hair_services.map(i => {
                     
-                    return <ServicesAndPricing />
+                    return <ServicesAndPricing service='hair'/>
                 })}
                 
 
@@ -74,7 +74,7 @@ class PreDash extends React.Component {
                 </div>
                 {this.state.massage_services.map(i => {
                     
-                    return <ServicesAndPricing />
+                    return <ServicesAndPricing service='massage'/>
                 })}
                 
                     
