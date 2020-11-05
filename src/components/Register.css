@@ -93,7 +93,20 @@
     margin-left: 63%;
    }
 
-   .nailsButton {
+   .serviceButtons {
      margin-top: 15%;
-     margin-left: 45%;
-   }
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     
+     }
+
+     .nailsButton {
+      margin-bottom: 20px;
+     }
+     .hairButton {
+      margin-bottom: 20px;
+     }
+     .massageButton {
+      margin-bottom: 20px;
+     }
