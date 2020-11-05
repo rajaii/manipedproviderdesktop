@@ -23,7 +23,32 @@ class PreDash extends React.Component {
     
     }
 
+    showWidget = widget => {
+        widget.open();
+    }
+
+    
+
     render() {
+
+        const userId = localStorage.getItem('uID');
+        const photoWidget = window.cloudinary.createUploadWidget({
+            cloudName: 'maniped', 
+            uploadPreset: 'manipedProvider_preset',
+            cropping: true}, (error, result) => { 
+              if (!error && result && result.event === "success") { 
+                console.log('Done! Here is the image info: ', result.info); 
+                console.log(result.info.secure_url)
+                /////////////////////////////////////////////////
+                const body = {work_img_url_1: result.info.secure_url}
+                this.props.editProfile(userId, body);
+                //potential error needed to be give to user here if editProfile does not work
+                window.confirm('Thank you for adding your photo.  Please continue with your application');
+              }
+            }
+          )
+
+
         return (
             <div className='serviceButtons'>
                 <div className='nailsButton'>
