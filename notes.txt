@@ -4,17 +4,12 @@ gold: #dba622,
 white: #f6f6f6,
 red: #670404
 
-    => 
+    
     FLOW => REgister,  on registed verify email, login, then after verification 
     secondsignuppage, and then predash (addservices and add pics of work), then a message displays that they have successfully applied and lock them out until admin 
     activates them and then they can log in which goes to dash and let them take bookings. 
     
-    1)
-      secondSignupPage:
-            validation and handlesubmit and button to edit profile with the entered info.  
-            
-            Then test the component to make sure all is wired actions and reducers included  
-
+=====>
     2)then make the componenets for adding services and pricing and actions reducers and tweak the helpers to give back the new table sections
     to fe in the json 
          add pricing and services:

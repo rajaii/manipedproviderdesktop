@@ -11,8 +11,6 @@ export const editProfile = (id, body) => dispatch => {
     .then(res => {
         dispatch({type: EDIT_PROFILE_SUCCESS, payload: res.data})
     })
-    .catch(err => 
-        
-        dispatch({type: EDIT_PROFILE_FAILURE, payload: err.response}))
+    .catch(err => dispatch({type: EDIT_PROFILE_FAILURE, payload: err.response}))
 
 }

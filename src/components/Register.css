@@ -92,3 +92,21 @@
     display: flex;
     margin-left: 63%;
    }
+
+   .serviceButtons {
+     margin-top: 15%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     
+     }
+
+     .nailsButton {
+      margin-bottom: 20px;
+     }
+     .hairButton {
+      margin-bottom: 20px;
+     }
+     .massageButton {
+      margin-bottom: 20px;
+     }
