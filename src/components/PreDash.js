@@ -56,7 +56,7 @@ class PreDash extends React.Component {
                 </div>
                 {this.state.nails_services.map(i => {
                     console.log('hellp')
-                    return <ServicesAndPricing />
+                    return <ServicesAndPricing service='nails'/>
                 })}
                 
 
