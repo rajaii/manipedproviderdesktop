@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 
-import { register } from '../actions/authActions.js';
+import { register } from '../../actions/authActions.js';
 import './Register.css';
 
 

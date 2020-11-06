@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 
-import { login } from '../actions/authActions.js';
+import { login } from '../../actions/authActions.js';
 import './Login.css'; 
 
 let loginSchema = yup.object().shape({

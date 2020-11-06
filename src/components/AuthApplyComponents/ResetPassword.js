@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { connect } from 'react-redux';
 import * as qs from 'qs';
 
-import { resetPasswordFin } from '../actions/authActions.js';
+import { resetPasswordFin } from '../../actions/authActions.js';
 import './Login.css';
 
 let registrationSchema = yup.object().shape({

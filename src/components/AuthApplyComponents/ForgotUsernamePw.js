@@ -2,7 +2,7 @@ import React from 'react';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 
-import { sendUsername, resetPassword } from '../actions/authActions.js';
+import { sendUsername, resetPassword } from '../../actions/authActions.js';
 import './Login.css';
 
 

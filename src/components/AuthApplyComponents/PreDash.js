@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-import ServicesAndPricing from './ServicesAndPricing.js';
+import AddServicesAndPricing from './AddServicesAndPricing.js';
+import ServicesAdded from './ServicesAdded.js';
 import './Register.css';
 
 class PreDash extends React.Component {
@@ -10,15 +11,15 @@ class PreDash extends React.Component {
         super(props);
         this.state = {
             nails_services: {
-                open: false,
+                openRcpt: false,
                 amtSNP: []
             },
             hair_services: {
-                open: false,
+                openRcpt: false,
                 amtSNP: []
             },
             massage_services: {
-                open: false,
+                openRcpt: false,
                 amtSNP: []
             },
         }
@@ -40,7 +41,15 @@ class PreDash extends React.Component {
         widget.open();
     }
 
-    
+    closeSNP = e => {
+        this.setState({
+            ...this.state,
+            [e.target.name]: {
+                ...this.state[e.target.name],
+                openRcpt: true
+            }
+        })
+    }
 
     render() {
 
@@ -69,7 +78,7 @@ class PreDash extends React.Component {
                 </div>
                 {this.state.nails_services.amtSNP.map(i => {
                     
-                    return <ServicesAndPricing service='nails'/>
+                    return <AddServicesAndPricing close={this.closeSNP} stVal='nails_services' service='nails'/>
                 })}
                 
 
@@ -78,7 +87,7 @@ class PreDash extends React.Component {
                 </div>
                 {this.state.hair_services.amtSNP.map(i => {
                     
-                    return <ServicesAndPricing service='hair'/>
+                    return <AddServicesAndPricing close={this.closeSNP} stVal='hair_services' service='hair'/>
                 })}
                 
 
@@ -87,7 +96,7 @@ class PreDash extends React.Component {
                 </div>
                 {this.state.massage_services.amtSNP.map(i => {
                     
-                    return <ServicesAndPricing service='massage'/>
+                    return <AddServicesAndPricing close={this.closeSNP} stVal='massage_services' service='massage'/>
                 })}
                 
                     

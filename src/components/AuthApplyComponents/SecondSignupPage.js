@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as yup from 'yup';
 
-import { editProfile } from '../actions/appActions.js'; 
+import { editProfile } from '../../actions/appActions.js'; 
 import './Register.css';
 
 let applicationSchema = yup.object().shape({
