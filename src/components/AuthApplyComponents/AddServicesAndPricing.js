@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { editProfile } from '../actions/appActions';
+import { editProfile } from '../../actions/appActions.js';
 import * as yup from 'yup';
 
 const serviceNPriceSchema = yup.object().shape({
@@ -8,7 +8,7 @@ const serviceNPriceSchema = yup.object().shape({
     price: yup.string().matches(/^\$(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?$/,"Please enter a vaild dollar amount with cents and a leading dollar sign").required("Price is required")
 })
 
-function ServicesAndPricing (props) {
+function AddServicesAndPricing (props) {
     const [ service, setService ] = useState('');
     const [ price, setPrice ] = useState('');
     const [ validationError, setValidationError ] = useState({inner: []})
@@ -69,10 +69,10 @@ function ServicesAndPricing (props) {
                 <button onSubmit={handleSubmit}>Add service and price</button>
                 {validationError.inner != undefined && validationError.inner.filter(i => i.message === "Price is required").length > 0 ?  <div className="ErrorB">PRICE IS REQUIRED RE-ENTER AND CLICK SUBMIT</div> : null}
                 {validationError.inner != undefined && validationError.inner.filter(i => i.message === "Please enter a vaild dollar amount with cents and a leading dollar sign").length > 0 ?  <div className="ErrorB">"PLEASE ENTER A VALID DOLLAR AMOUNT WITH CENTS AND A LEADING DOLLAR SIGN"</div> : null}
-       
-            </form>        
+            </form>  
+            <button name={props.stVal} onClick={props.close}></button>      
         </div>
     )
 }
 
-export default connect(null, editProfile)(ServicesAndPricing);
+export default connect(null, editProfile)(AddServicesAndPricing);

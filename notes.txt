@@ -10,6 +10,10 @@ red: #670404
     activates them and then they can log in which goes to dash and let them take bookings. 
     
 =====>
+    make it so when you add a service you can dismiss the form and a component with the added service renders so they can see what was added.
+    if the state bool is true the button will say add another ... service, and the component with the added services will map and render all the
+    added services for all 3
+
     2)then make the componenets for adding services and pricing and actions reducers and tweak the helpers to give back the new table sections
     to fe in the json 
          add pricing and services:

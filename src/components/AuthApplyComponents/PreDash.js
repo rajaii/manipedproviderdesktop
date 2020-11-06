@@ -2,23 +2,37 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-import ServicesAndPricing from './ServicesAndPricing.js';
+import AddServicesAndPricing from './AddServicesAndPricing.js';
+import ServicesAdded from './ServicesAdded.js';
 import './Register.css';
 
 class PreDash extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            nails_services: [],
-            hair_services: [],
-            massage_services: []
+            nails_services: {
+                openRcpt: false,
+                amtSNP: []
+            },
+            hair_services: {
+                openRcpt: false,
+                amtSNP: []
+            },
+            massage_services: {
+                openRcpt: false,
+                amtSNP: []
+            },
         }
     }
 
     handleAdd = e => {
+        //[false, [null,]],
         this.setState({
             ...this.state,
-            [e.target.name]: [...this.state[e.target.name], null]
+            [e.target.name]:{
+                ...this.state[e.target.name],
+                amtSNP: [...this.state[e.target.name].amtSNP, null]
+            } 
         })
     
     }
@@ -27,7 +41,15 @@ class PreDash extends React.Component {
         widget.open();
     }
 
-    
+    closeSNP = e => {
+        this.setState({
+            ...this.state,
+            [e.target.name]: {
+                ...this.state[e.target.name],
+                openRcpt: true
+            }
+        })
+    }
 
     render() {
 
@@ -54,27 +76,27 @@ class PreDash extends React.Component {
                 <div className='nailsButton'>
                     <button name='nails_services' onClick={this.handleAdd}>Add New Nails Service</button>
                 </div>
-                {this.state.nails_services.map(i => {
+                {this.state.nails_services.amtSNP.map(i => {
                     
-                    return <ServicesAndPricing service='nails'/>
+                    return <AddServicesAndPricing close={this.closeSNP} stVal='nails_services' service='nails'/>
                 })}
                 
 
                 <div className='hairButton'>
                     <button name='hair_services' onClick={this.handleAdd}>Add New Hair Service</button>
                 </div>
-                {this.state.hair_services.map(i => {
+                {this.state.hair_services.amtSNP.map(i => {
                     
-                    return <ServicesAndPricing service='hair'/>
+                    return <AddServicesAndPricing close={this.closeSNP} stVal='hair_services' service='hair'/>
                 })}
                 
 
                 <div className='massageButton'>
                     <button name='massage_services' onClick={this.handleAdd}>Add New Massage Service</button>
                 </div>
-                {this.state.massage_services.map(i => {
+                {this.state.massage_services.amtSNP.map(i => {
                     
-                    return <ServicesAndPricing service='massage'/>
+                    return <AddServicesAndPricing close={this.closeSNP} stVal='massage_services' service='massage'/>
                 })}
                 
                     
