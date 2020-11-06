@@ -13,23 +13,18 @@ red: #670404
     2)then make the componenets for adding services and pricing and actions reducers and tweak the helpers to give back the new table sections
     to fe in the json 
          add pricing and services:
-            PSEUDO for how to add new components for each service/price the provider wants to add:
-            //make a state value of {
-                nails_services: 0,
-                hair_service: 0,
-                massage_service: 0
-
-            }
-            //make a button in each section where they can add the specific service type
-            //if they click the buttton, the state value increments
-            //in render loop each section up to this.state.nail_service (ex) and render a component every time
+            //test why editprofile not working in add services and pricing
+            //style Services and pricing component
+            //set up the cloud widget to dynamically enter the work img url #
             //make 1 component for all 3 but pass down the type of service as a prop so the messages are different.
             //make an action for edit service and dynamically add the endpoint by passing it in the fnc and then in the url so can use 1 action for all 3
 
-    3) tweak the user app to on bookings display a component with the providers info before booking.  Ie after the search click provider,
+    3) test all the done stuff with the non verification token lodign and pulling ids from local storage
+
+    4) tweak the user app to on bookings display a component with the providers info before booking.  Ie after the search click provider,
     see their details and either click back or click forward to book if you like what you see.
     
-    4)then wire through the FLOW for the above ^ ie wire through the redirects and verifies, then move on to dash and confirming apts, and twilio
+    5)then wire through the FLOW for the above ^ ie wire through the redirects and verifies, then move on to dash and confirming apts, and twilio
     and planning everything else
 
             
@@ -39,6 +34,8 @@ red: #670404
         make it so users get verified immediately after signup, and then login and if the fields are null are routed to secondsignuppage where they will 
         enter the pics and other fields.  After that to the Addservice page where they can add the services and pricing.  After they have at least 1 s&p
         sedn to dashboard
+
+    6) test all the components with the new verification signup login scheme make sure everything works
 
         
 
