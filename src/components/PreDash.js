@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as yup from 'yup';
+
 
 import ServicesAndPricing from './ServicesAndPricing.js';
 import './Register.css';
