@@ -70,7 +70,7 @@ function AddServicesAndPricing (props) {
                 {validationError.inner != undefined && validationError.inner.filter(i => i.message === "Price is required").length > 0 ?  <div className="ErrorB">PRICE IS REQUIRED RE-ENTER AND CLICK SUBMIT</div> : null}
                 {validationError.inner != undefined && validationError.inner.filter(i => i.message === "Please enter a vaild dollar amount with cents and a leading dollar sign").length > 0 ?  <div className="ErrorB">"PLEASE ENTER A VALID DOLLAR AMOUNT WITH CENTS AND A LEADING DOLLAR SIGN"</div> : null}
             </form>  
-            <button name={props.stVal} onClick={props.close}></button>      
+            <button name={props.stVal} onClick={props.close}>Dismiss</button>      
         </div>
     )
 }
