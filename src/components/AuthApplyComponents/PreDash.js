@@ -25,10 +25,12 @@ class PreDash extends React.Component {
             },
             hair_services: {
                 openRcpt: false,
+                openForm: false,
                 amtSNP: []
             },
             massage_services: {
                 openRcpt: false,
+                openForm: false,
                 amtSNP: []
             },
         }
