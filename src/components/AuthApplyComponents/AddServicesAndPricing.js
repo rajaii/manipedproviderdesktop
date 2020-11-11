@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { editProfile } from '../../actions/appActions.js';
+import { addService } from '../../actions/appActions.js';
 import * as yup from 'yup';
 
 const serviceNPriceSchema = yup.object().shape({
@@ -14,8 +14,9 @@ function AddServicesAndPricing (props) {
     const [ validationError, setValidationError ] = useState({inner: []})
 
 
-   async function handleSubmit (e) {
+   function handleSubmit (e) {
         e.preventDefault()
+        const id = localStorage.getItem('uID');
         let vBody = {
             service: service,
             price: price,
@@ -24,12 +25,12 @@ function AddServicesAndPricing (props) {
         let body = {
             service: service,
             price: price,
+            provider_id: id
         }
-        serviceNPriceSchema.validate(vBody, {abortEarly: false})
+    serviceNPriceSchema.validate(vBody, {abortEarly: false})
     .then(async d => {
         if (d) {
-        const id = localStorage.getItem('uID')
-        await props.editProfile(1, body);
+        await props.addService(props.stVal, body);
         setService('');
         setPrice('');
         window.confirm('Thank you for adding this service and pricing, it will now be available on your profile!');
@@ -41,7 +42,7 @@ function AddServicesAndPricing (props) {
     
       
 }
-    
+ 
 
 
     return (
@@ -66,13 +67,13 @@ function AddServicesAndPricing (props) {
                 name='price'
                 placeholder='enter price'
                 />
-                <button onSubmit={handleSubmit}>Add service and price</button>
+                <button onClick={(e) => handleSubmit(e)}>Add service and price</button>
                 {validationError.inner != undefined && validationError.inner.filter(i => i.message === "Price is required").length > 0 ?  <div className="ErrorB">PRICE IS REQUIRED RE-ENTER AND CLICK SUBMIT</div> : null}
                 {validationError.inner != undefined && validationError.inner.filter(i => i.message === "Please enter a vaild dollar amount with cents and a leading dollar sign").length > 0 ?  <div className="ErrorB">"PLEASE ENTER A VALID DOLLAR AMOUNT WITH CENTS AND A LEADING DOLLAR SIGN"</div> : null}
             </form>  
-            <button name={props.stVal} onClick={props.close}>Dismiss</button>      
+            <button name={props.stVal} onClick={() => props.close(props.stVal)}>Dismiss</button>      
         </div>
     )
 }
 
-export default connect(null, editProfile)(AddServicesAndPricing);
+export default connect(null, { addService })(AddServicesAndPricing);

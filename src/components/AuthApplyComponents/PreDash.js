@@ -1,15 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-
+import { editProfile, fetchServices } from '../../actions/appActions.js';
 import AddServicesAndPricing from './AddServicesAndPricing.js';
 import ServicesAdded from './ServicesAdded.js';
 import './Register.css';
-//What:
-//want only 1 addsnp to show up when they click the respective add service button
-//when they click dismiss it close that and set the state of those inputs to ''
-//when they close those the predash runs a get to the services and price where provider_id === uID:
-//map through ^ and display a ServicesAdded component for each above the respective AddServicesAndPricing component so provider can see what is added
+
 
 
 
@@ -21,29 +17,34 @@ class PreDash extends React.Component {
             nails_services: {
                 openForm: false,
                 openRcpt: false,
-                amtSNP: []
+                amtSA: []
             },
             hair_services: {
                 openRcpt: false,
                 openForm: false,
-                amtSNP: []
+                amtSA: []
             },
             massage_services: {
-                openRcpt: false,
+                openSNPList: false,
                 openForm: false,
-                amtSNP: []
+                amtSA: []
             },
         }
     }
 
     handleAdd = e => {
+        e.preventDefault();
+        console.log(e.target.name)
         this.setState({
             [e.target.name]: {
                 ...this.state[e.target.name],
-                openForm: true
+                openForm: true,
+                openSNPList: false
             }
         })
+        
     }
+
 
    
 
@@ -51,14 +52,17 @@ class PreDash extends React.Component {
         widget.open();
     }
 
-    closeSNP = e => {
+    closeSNP = (e, service) => {
         this.setState({
             ...this.state,
             [e.target.name]: {
                 ...this.state[e.target.name],
-                openForm: false
+                openForm: false,
+                openSNPList: true
             }
         })
+        this.props.fetchServices(service);
+
     }
 
     render() {
@@ -83,18 +87,20 @@ class PreDash extends React.Component {
 
         return (
             <div className='serviceButtons'>
+                {/*display the servicesAdded here will need to map the reducer and display here if open RCT is true and ...map()... */}
                 <div className='nailsButton'>
                     <button name='nails_services' onClick={this.handleAdd}>Add New Nails Service</button>
                 </div>
+                
                 {this.state.nails_services.openForm && <AddServicesAndPricing close={this.closeSNP} stVal='nails_services' service='nails'/>}
                 
-
+                {/*display the servicesAdded here will need to map the reducer and display here if open RCT is true and ...map()... */}
                 <div className='hairButton'>
                     <button name='hair_services' onClick={this.handleAdd}>Add New Hair Service</button>
                 </div>
                 {this.state.hair_services.openForm && <AddServicesAndPricing close={this.closeSNP} stVal='hair_services' service='hair'/>}
             
-            
+                {/*display the servicesAdded here will need to map the reducer and display here if open RCT is true and ...map()... */}
                 <div className='massageButton'>
                     <button name='massage_services' onClick={this.handleAdd}>Add New Massage Service</button>
                 </div>
@@ -107,4 +113,10 @@ class PreDash extends React.Component {
     }
 }
 
-export default PreDash;
+const mapStateToProps = state => {
+    return {
+        
+    }
+}
+
+export default connect(null, { editProfile })(PreDash);

@@ -14,3 +14,31 @@ export const editProfile = (id, body) => dispatch => {
     .catch(err => dispatch({type: EDIT_PROFILE_FAILURE, payload: err.response}))
 
 }
+
+export const ADD_SERVICE_START = 'ADD_SERVICE_START';
+export const ADD_SERVICE_SUCCESS = 'ADD_SERVICE_SUCCESS';
+export const ADD_SERVICE_FAILURE = 'ADD_SERVICE_FAILURE';
+
+
+export const addService = (service, body) => dispatch => {
+    dispatch({type: ADD_SERVICE_START});
+    return axiosWithAuth().post(`http://localhost:4000/api/${service}/`, body)
+    .then(res => {
+        dispatch({type: ADD_SERVICE_SUCCESS, payload: res.data})
+    })
+    .catch(err => dispatch({type: ADD_SERVICE_FAILURE, payload: err.response}))
+}
+
+export const FETCH_SERVICES_START = 'FETCH_SERVICES_START';
+export const FETCH_SERVICES_SUCCESS = 'FETCH_SERVICES_SUCCESS';
+export const FETCH_SERVICES_FAILURE = 'FETCH_SERVICES_FAILURE';
+
+
+export const fetchServices = (service) => dispatch => {
+    dispatch({type: FETCH_SERVICES_START});
+    return axiosWithAuth().get(`http://localhost:4000/api/${service}/`)
+    .then(res => {
+        dispatch({type: FETCH_SERVICES_SUCCESS, payload: res.data})
+    })
+    .catch(err => dispatch({type: FETCH_SERVICES_FAILURE, payload: err.response}))
+}
