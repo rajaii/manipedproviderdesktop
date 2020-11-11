@@ -10,14 +10,12 @@ red: #670404
     activates them and then they can log in which goes to dash and let them take bookings. 
     
 =====>
-    make it so when you add a service you can dismiss the form and a component with the added service renders so they can see what was added.
-    if the state bool is true the button will say add another ... service, and the component with the added services will map and render all the
-    added services for all 3
+    
 
     2)then make the componenets for adding services and pricing and actions reducers and tweak the helpers to give back the new table sections
-    to fe in the json 
-         add pricing and services:
-            //test why editprofile not working in add services and pricing
+            //figure out if can make services list on predash render using the 1 action and 1 reducer. if not need 3 actions, 1 for hair, nails,
+            andmassage, and reducers as well.  map through the respective reducers to display when the form is closed (done via booleans in state)
+            already pretty much wired into the functions not tested. 
             //style Services and pricing component
             //set up the cloud widget to dynamically enter the work img url #
             //make 1 component for all 3 but pass down the type of service as a prop so the messages are different.
