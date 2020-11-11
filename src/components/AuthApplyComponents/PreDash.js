@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-
+import { editProfile } from '../../actions/appActions.js';
 import AddServicesAndPricing from './AddServicesAndPricing.js';
 import ServicesAdded from './ServicesAdded.js';
 import './Register.css';
@@ -108,4 +108,4 @@ class PreDash extends React.Component {
     }
 }
 
-export default PreDash;
+export default connect(null, { editProfile })(PreDash);

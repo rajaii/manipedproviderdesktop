@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { editProfile } from '../../actions/appActions.js';
+import { addService } from '../../actions/appActions.js';
 import * as yup from 'yup';
 
 const serviceNPriceSchema = yup.object().shape({
@@ -16,6 +16,7 @@ function AddServicesAndPricing (props) {
 
    function handleSubmit (e) {
         e.preventDefault()
+        const id = localStorage.getItem('uID');
         let vBody = {
             service: service,
             price: price,
@@ -24,12 +25,12 @@ function AddServicesAndPricing (props) {
         let body = {
             service: service,
             price: price,
+            provider_id: id
         }
     serviceNPriceSchema.validate(vBody, {abortEarly: false})
     .then(async d => {
         if (d) {
-        const id = localStorage.getItem('uID');
-        await props.editProfile(id, body);
+        await props.addService(props.stVal, body);
         setService('');
         setPrice('');
         window.confirm('Thank you for adding this service and pricing, it will now be available on your profile!');
@@ -75,4 +76,4 @@ function AddServicesAndPricing (props) {
     )
 }
 
-export default connect(null, { editProfile })(AddServicesAndPricing);
+export default connect(null, { addService })(AddServicesAndPricing);
