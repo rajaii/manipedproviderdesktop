@@ -6,6 +6,8 @@ export const EDIT_PROFILE_SUCCESS = 'EDIT_PROFILE_SUCCESS';
 export const EDIT_PROFILE_FAILURE = 'EDIT_PROFILE_FAILURE';
 
 export const editProfile = (id, body) => dispatch => {
+    console.log("id", id)
+    console.log('body', body)
     dispatch({type: EDIT_PROFILE_START});
     return axiosWithAuth().put(`http://localhost:4000/api/providers/${id}`, body)
     .then(res => {
