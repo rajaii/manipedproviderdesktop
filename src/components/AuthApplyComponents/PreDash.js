@@ -16,11 +16,11 @@ class PreDash extends React.Component {
         this.state = {
             nails_services: {
                 openForm: false,
-                openRcpt: false,
+                openSNPList: false,
                 amtSA: []
             },
             hair_services: {
-                openRcpt: false,
+                openSNPList: false,
                 openForm: false,
                 amtSA: []
             },
@@ -30,6 +30,7 @@ class PreDash extends React.Component {
                 amtSA: []
             },
         }
+        this.closeSNP = this.closeSNP.bind(this);
     }
 
     handleAdd = e => {
@@ -52,7 +53,9 @@ class PreDash extends React.Component {
         widget.open();
     }
 
-    closeSNP = (e, service) => {
+  async  closeSNP (service, type, e) {
+        await this.props.fetchServices(service, type);
+        console.log('here',this.props.nailsServices)
         this.setState({
             ...this.state,
             [e.target.name]: {
@@ -61,7 +64,7 @@ class PreDash extends React.Component {
                 openSNPList: true
             }
         })
-        this.props.fetchServices(service);
+        
 
     }
 
@@ -87,20 +90,26 @@ class PreDash extends React.Component {
 
         return (
             <div className='serviceButtons'>
-                {/*display the servicesAdded here will need to map the reducer and display here if open RCT is true and ...map()... */}
+                {this.state.nails_services.openSNPList &&  this.props.nailsServices.map(n => {
+                   return <ServicesAdded service={n.service} price={n.price}/>
+                })}
                 <div className='nailsButton'>
                     <button name='nails_services' onClick={this.handleAdd}>Add New Nails Service</button>
                 </div>
                 
                 {this.state.nails_services.openForm && <AddServicesAndPricing close={this.closeSNP} stVal='nails_services' service='nails'/>}
                 
-                {/*display the servicesAdded here will need to map the reducer and display here if open RCT is true and ...map()... */}
+                {this.state.hair_services.openSNPList && this.props.hairServices.map(h => {
+                   return <ServicesAdded service={h.service} price={h.price}/>
+                })}
                 <div className='hairButton'>
                     <button name='hair_services' onClick={this.handleAdd}>Add New Hair Service</button>
                 </div>
                 {this.state.hair_services.openForm && <AddServicesAndPricing close={this.closeSNP} stVal='hair_services' service='hair'/>}
             
-                {/*display the servicesAdded here will need to map the reducer and display here if open RCT is true and ...map()... */}
+                {this.state.massage_services.openSNPList && this.props.massageServices.map(m => {
+                   return <ServicesAdded service={m.service} price={m.price}/>
+                })}
                 <div className='massageButton'>
                     <button name='massage_services' onClick={this.handleAdd}>Add New Massage Service</button>
                 </div>
@@ -115,8 +124,10 @@ class PreDash extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        
+        nailsServices: state.servicesAndPricingReducer.nailsServices,
+        hairServices: state.servicesAndPricingReducer.hairServices,
+        massageServices: state.servicesAndPricingReducer.massageServices
     }
 }
 
-export default connect(null, { editProfile })(PreDash);
+export default connect(mapStateToProps, { editProfile, fetchServices })(PreDash);

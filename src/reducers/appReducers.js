@@ -1,5 +1,5 @@
 import { EDIT_PROFILE_START, EDIT_PROFILE_SUCCESS, EDIT_PROFILE_FAILURE, ADD_SERVICE_START, ADD_SERVICE_SUCCESS, ADD_SERVICE_FAILURE,
-FETCH_SERVICES_START, FETCH_SERVICES_SUCCESS, FETCH_SERVICES_FAILURE } from '../actions/appActions.js';
+ } from '../actions/appActions.js';
 
 const providerUserInfoInitialState = {
     fetchingUserInfo: false,
@@ -12,9 +12,13 @@ const providerUserInfoInitialState = {
 
 const servicesAndPricingInitialState = {
     addingService: false,
-    fetchingServices: false,
+    fetchingNailsServices: false,
+    fetchingHairServices: false,
+    fetchingMassageServices: false,
     service: null,
-    services: null,
+    nailsServices: null,
+    hairServices: null,
+    massageServices: null,
     error: null
 } 
 
@@ -63,21 +67,55 @@ export function servicesAndPricingReducer (state=servicesAndPricingInitialState,
                 addingService: false,
                 error: action.payload
             } 
-        case FETCH_SERVICES_START:
+        case 'FETCH_NAILS_SERVICES_START':
             return {
                 ...state, 
-                fetchingServices: true
+                fetchingNailsServices: true
             }
-        case FETCH_SERVICES_SUCCESS:
+        case 'FETCH_NAILS_SERVICES_SUCCESS':
             return {
                 ...state,
-                fetchingServices: false,
-                services: action.payload,
+                fetchingNailsServices: false,
+                nailsServices: action.payload,
             }
-        case FETCH_SERVICES_FAILURE:
+        case 'FETCH_NAILS_SERVICES_FAILURE':
             return {
                 ...state,
-                fetchingServices: false,
+                fetchingNailsServices: false,
+                error: action.payload
+            }
+        case 'FETCH_HAIR_SERVICES_START':
+            return {
+                ...state, 
+                fetchingHairServices: true
+            }
+        case 'FETCH_HAIR_SERVICES_SUCCESS':
+            return {
+                ...state,
+                fetchingHairServices: false,
+                hairServices: action.payload,
+            }
+        case 'FETCH_HAIR_SERVICES_FAILURE':
+            return {
+                ...state,
+                fetchingHairServices: false,
+                error: action.payload
+            }
+        case 'FETCH_MASSAGE_SERVICES_START':
+            return {
+                ...state, 
+                fetchingMassageServices: true
+            }
+        case 'FETCH_MASSAGE_SERVICES_SUCCESS':
+            return {
+                ...state,
+                fetchingMassageServices: false,
+                massageServices: action.payload,
+            }
+        case 'FETCH_MASSAGE_SERVICES_FAILURE':
+            return {
+                ...state,
+                fetchingMassageServices: false,
                 error: action.payload
             }
         default:
