@@ -13,10 +13,8 @@ red: #670404
     
 
     2)then make the componenets for adding services and pricing and actions reducers and tweak the helpers to give back the new table sections
-            //figure out if can make services list on predash render using the 1 action and 1 reducer. if not need 3 actions, 1 for hair, nails,
-            andmassage, and reducers as well.  map through the respective reducers to display when the form is closed (done via booleans in state)
-            already pretty much wired into the functions not tested. 
-            //style Services and pricing component
+            
+            
             //set up the cloud widget to dynamically enter the work img url #
             //make 1 component for all 3 but pass down the type of service as a prop so the messages are different.
             //make an action for edit service and dynamically add the endpoint by passing it in the fnc and then in the url so can use 1 action for all 3

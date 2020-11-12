@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { addService } from '../../actions/appActions.js';
 import * as yup from 'yup';
 
+import './Register.css';
+
 const serviceNPriceSchema = yup.object().shape({
     service: yup.string().required('Service is required'),
     price: yup.string().matches(/^\$(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?$/,"Please enter a vaild dollar amount with cents and a leading dollar sign").required("Price is required")
@@ -48,8 +50,9 @@ function AddServicesAndPricing (props) {
 
     return (
         <div className='sPWrap'>
-            <form type='submit' onSubmit={handleSubmit}>
+            <form className='sPForm' type='submit' onSubmit={handleSubmit}>
                 <label>Add the specific {`${props.service}`} service type here: </label>
+                <br></br>
                 <input 
                 type='text'
                 onChange={(e) => setService(e.target.value)}
@@ -61,6 +64,7 @@ function AddServicesAndPricing (props) {
                 {validationError.inner != undefined && validationError.inner.filter(i => i.message === "Service is required").length > 0 ?  <div className="ErrorB">SERVICE IS REQUIRED RE-ENTER AND CLICK SUBMIT</div> : null}
 
                 <label>Add the {`${props.service}`} service's pricing here (must be of the form $100.00 ie dollar sign, dollar value, period, cents): </label>
+                <br></br>
                 <input 
                 type='text'
                 onChange={(e) => setPrice(e.target.value)}

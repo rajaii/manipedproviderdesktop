@@ -121,3 +121,8 @@
        border-left: none;
        border-right: none;
      }
+
+     .sPForm {
+       display: flex;
+       flex-direction: column;
+     }
