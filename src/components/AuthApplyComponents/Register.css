@@ -110,3 +110,14 @@
      .massageButton {
       margin-bottom: 20px;
      }
+
+     .sAWrap {
+       background-color: white;
+       border: 1px solid black;
+     }
+
+     .innerSA {
+       border: 1px solid black;
+       border-left: none;
+       border-right: none;
+     }
