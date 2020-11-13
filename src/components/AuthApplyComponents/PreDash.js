@@ -203,7 +203,7 @@ class PreDash extends React.Component {
         return (
             <div className='serviceButtons'>
                 {this.state.nails_services.openSNPList &&  this.props.nailsServices.map(n => {
-                   return <ServicesAdded service={n.service} price={n.price}/>
+                   return <ServicesAdded type="nails service" service={n.service} price={n.price}/>
                 })}
                 <div className='nailsButton'>
                     <button name='nails_services' onClick={this.handleAdd}>Add New Nails Service</button>
@@ -212,7 +212,7 @@ class PreDash extends React.Component {
                 {this.state.nails_services.openForm && <AddServicesAndPricing close={this.closeSNP} stVal='nails_services' service='nails'/>}
                 
                 {this.state.hair_services.openSNPList && this.props.hairServices.map(h => {
-                   return <ServicesAdded service={h.service} price={h.price}/>
+                   return <ServicesAdded type='hair service' service={h.service} price={h.price}/>
                 })}
                 <div className='hairButton'>
                     <button name='hair_services' onClick={this.handleAdd}>Add New Hair Service</button>
@@ -220,7 +220,7 @@ class PreDash extends React.Component {
                 {this.state.hair_services.openForm && <AddServicesAndPricing close={this.closeSNP} stVal='hair_services' service='hair'/>}
             
                 {this.state.massage_services.openSNPList && this.props.massageServices.map(m => {
-                   return <ServicesAdded service={m.service} price={m.price}/>
+                   return <ServicesAdded type='massage service' service={m.service} price={m.price}/>
                 })}
                 <div className='massageButton'>
                     <button name='massage_services' onClick={this.handleAdd}>Add New Massage Service</button>
