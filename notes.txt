@@ -17,8 +17,9 @@ red: #670404
     4)then wire through the FLOW for the above ^ ie wire through the redirects and verifies, then move on to dash and confirming apts, and twilio
     and planning everything else
 
+       ===> signup verification implemented now test it
             
-        fully wire through signup and login verifications and then wire through the routing on reg and test the above compoennts and actions
+        fully wire through login verifications and then wire through the routing on reg and test the above compoennts and actions
         with a logged in user:
         c
         make it so users get verified immediately after signup, and then login and if the fields are null are routed to secondsignuppage where they will 
