@@ -43,14 +43,19 @@ class Login extends React.Component {
         .then(async d => {
             if (d) {
             let res = await this.props.login(body)
+            //if they are not verified
             if (res != undefined && res.payload.data.message === "please verify your account through your email before logging in...") {
                 this.props.history.push('/notverified');
             }
+            
+
+
             else {
             this.setState({
                 username: '',
                 password: ''
             })
+            const id = localStorage.getItem('uID');
             
             
             this.props.history.push('/dashboard')
@@ -107,7 +112,8 @@ class Login extends React.Component {
 const mapStateToProps = state => {
     return {
         loggingIn: state.loginReducer.loggingIn,
-        welcomeMessage: state.loginReducer.welcomeMessage
+        welcomeMessage: state.loginReducer.welcomeMessage,
+        usersInfo: state.providerInfoUserReducer.usersInfo,
     }
 }
 

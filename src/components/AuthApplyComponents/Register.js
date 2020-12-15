@@ -97,7 +97,7 @@ async handleSubmit (e) {
             })
             return
         } else {
-            window.confirm('Contratulations! You are now on your way to becoming a maniPed provider.  Verify your account in your email and continue your application on the next page.')
+            window.confirm('Contratulations! You are now on your way to becoming a maniPed provider.  Verify your account in your email, and continue your application on the next page.')
             this.setState({
                 first_name: '',
                 last_name: '',

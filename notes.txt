@@ -5,9 +5,44 @@ white: #f6f6f6,
 red: #670404
 
     
-    FLOW => REgister,  on registed verify email, login, then after verification 
-    secondsignuppage, and then predash (addservices and add pics of work), then a message displays that they have successfully applied and lock them out until admin 
-    activates them and then they can log in which goes to dash and let them take bookings. 
+    FLOW:
+    
+continue on line 32's logic below which takes you to login.js line 47 will need to make route for resendproviderverification.  Make sure login is
+100% dialed in and everything working.  DID NOT WORK ON IT BEFORE.  wire in the below logic, and test.
+
+    DONE => Register,  on normal registed route fill out secondSignupPage, and 
+    
+    then route to login with a ty confirm that tells them they have to be 
+    activated. 
+    
+    On login:
+        if activated and verified:
+            if at least one service filled in:
+                route to dash
+            else:
+                route to predash
+        
+        else: (if not activated and/or verified send error indicating such)
+
+            if all secondSignupPage details are in their profile:
+
+                send them to secondsignuppage to finish and then route to login with a ty confirm that tells them they have to be
+
+            else:
+
+                send to login and give a window.confirm() saying they are not verified or activated yet in 2 separate statements 
+    
+=====>if verified but not activated and no services route them to predash (logic run on server and use error messages to )
+    
+        if verified and they have at least 1 service route to dash upon login (put an option to add services and pics from dash too)
+
+        services must be approved by Maniped staff to show in their dash as available services (put a message telling them this where
+        their services are to be listed).
+
+    elif verified and activated and at least 1 service listed:
+
+        route to dash
+
     
 =====>
 
@@ -17,12 +52,12 @@ red: #670404
     4)then wire through the FLOW for the above ^ ie wire through the redirects and verifies, then move on to dash and confirming apts, and twilio
     and planning everything else
 
-       ===> signup verification implemented now test it
-            
+       ===>   
         fully wire through login verifications and then wire through the routing on reg and test the above compoennts and actions
         with a logged in user:
         c
-        make it so users get verified immediately after signup, and then login and if the fields are null are routed to secondsignuppage where they will 
+        make it so users get verified immediately after signup, and then login and if they are not verified they are blocked with a message that sais go verify.
+        if they are verified and not activated route them to secondsignupPage fields are null are routed to secondsignuppage where they will 
         enter the pics and other fields.  After that to the Addservice page where they can add the services and pricing.  After they have at least 1 s&p
         sedn to dashboard
     5) tweak the user app to on bookings display a component with the providers info before booking.  Ie after the search click provider,
