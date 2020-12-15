@@ -15,6 +15,20 @@ export const editProfile = (id, body) => dispatch => {
 
 }
 
+export const FETCH_PROFILE_START = 'FETCH_PROFILE_START';
+export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';
+export const FETCH_PROFILE_FAILURE = 'FETCH_PROFILE_FAILURE';
+
+export const fetchProfile = id => dispatch => {
+    dispatch({type: FETCH_PROFILE_START});
+    return axiosWithAuth().get(`http://localhost:4000/api/providers/${id}`)
+    .then(res => {
+        dispatch({type: FETCH_PROFILE_SUCCESS, payload: res.data})
+    })
+    .catch(err => dispatch({type: FETCH_PROFILE_FAILURE, payload: err.response}))
+
+}
+
 export const ADD_SERVICE_START = 'ADD_SERVICE_START';
 export const ADD_SERVICE_SUCCESS = 'ADD_SERVICE_SUCCESS';
 export const ADD_SERVICE_FAILURE = 'ADD_SERVICE_FAILURE';
