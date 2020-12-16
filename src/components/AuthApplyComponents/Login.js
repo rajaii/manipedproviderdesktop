@@ -45,18 +45,39 @@ class Login extends React.Component {
             let res = await this.props.login(body)
             //if they are not verified
             if (res != undefined && res.payload.data.message === "please verify your account through your email before logging in...") {
+                window.confirm('please verify your account through your email before logging in..')
                 this.props.history.push('/notverified');
+            }
+            //if they are not done with the application
+            else if (res != undefined && res.payload.data.message === 'Please fill out all fields to finish application') {
+                window.confirm('Please fill out the fields to finish your application...');
+                this.props.history.push('/secondsignuppage');
+            }
+            //if they are not activated
+            else if (res != undefined && res.payload.data.message === 'Management has not activated your account yet.') {
+                window.confirm('Management has not activated your account yet');
+                this.setState({
+                    username: '',
+                    password: ''
+                });
+            }
+            //if they are not using proper creds
+            else if (res != undefined && res.payload.data.message === 'Invalid Credentials') {
+                this.setState({
+                    username: '',
+                    password: ''
+                });
+                window.confirm('The username or password you entered does not match our records.');
             }
             
 
-
+            //they are verified, account appication complete, and activated and ready to visit either dash
             else {
             this.setState({
                 username: '',
                 password: ''
             })
             const id = localStorage.getItem('uID');
-            
             
             this.props.history.push('/dashboard')
         }
@@ -113,7 +134,6 @@ const mapStateToProps = state => {
     return {
         loggingIn: state.loginReducer.loggingIn,
         welcomeMessage: state.loginReducer.welcomeMessage,
-        usersInfo: state.providerInfoUserReducer.usersInfo,
     }
 }
 
