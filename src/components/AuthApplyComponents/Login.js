@@ -51,6 +51,7 @@ class Login extends React.Component {
             //if they are not done with the application
             else if (res != undefined && res.payload.data.message === 'Please fill out all fields to finish application') {
                 window.confirm('Please fill out the fields to finish your application...');
+                localStorage.setItem('uID',res.payload.data.id);
                 this.props.history.push('/secondsignuppage');
             }
             //if they are not activated
@@ -83,7 +84,7 @@ class Login extends React.Component {
         }
         }})
         .catch(err => {
-             console.log(err)
+             
              this.setState({
                 validationError: err
             })
@@ -95,7 +96,7 @@ class Login extends React.Component {
         <div className='loginCont'>
             <form className='loginCont' type='submit' onSubmit={this.handleSubmit}>
                 <h1 className="existing">Login here:</h1>
-                {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Username is required").length > 0 ?  <div className="ErrorB">USERNAME IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
+                {this.state.validationError != undefined && this.state.validationError.inner.filter(i => i.message === "Username is required").length > 0 ?  <div className="ErrorB">USERNAME IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
                 <label>Enter username here:</label>
                 <input 
                 type='text'
@@ -105,7 +106,7 @@ class Login extends React.Component {
                 onChange={this.handleChange}
                 />
                 <label>Enter password here:</label>
-                {this.state.validationError && this.state.validationError.inner.filter(i => i.message === "Password is required").length > 0 ?  <div className="ErrorB">PASSWORD IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
+                {this.state.validationError != undefined && this.state.validationError.inner.filter(i => i.message === "Password is required").length > 0 ?  <div className="ErrorB">PASSWORD IS REQUIRED RE-ENTER AND CLICK SIGN UP</div> : null}
                 <input 
                 type='password'
                 name='password'
