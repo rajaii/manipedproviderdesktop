@@ -47,8 +47,8 @@ class SecondSignupPage extends React.Component {
                     header: '',
                     about_me: ''
                 });
-                window.confirm('Thank you for signing up to be a maniPed pro.  Now you can add your services and pricing and also a portfolio of your work pictures for your profile.');
-                this.props.history.push('/predash');
+                window.confirm('Thank you for signing up to be a maniPed pro.  Now as soon as your account has been activated you can visit your dash!');
+                this.props.history.push('/login');
             }
         })
         .catch(err => {

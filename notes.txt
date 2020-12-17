@@ -7,9 +7,9 @@ red: #670404
     
     FLOW:
     
- ==> test login flow, and debug cloudinary.   
+ ==>  
     
-   
+   debugging resend verification link process routes /resendproviderverification and /verifyprovider
 
 
     

@@ -73,7 +73,7 @@ class Login extends React.Component {
             
 
             //they are verified, account appication complete, and activated and ready to visit either dash
-            else {
+            else if (res.payload.data.token != undefined) {
             this.setState({
                 username: '',
                 password: ''
@@ -81,6 +81,14 @@ class Login extends React.Component {
             const id = localStorage.getItem('uID');
             
             this.props.history.push('/dashboard')
+        }
+
+        else {
+            this.setState({
+                username: '',
+                password: ''
+            });
+            window.confirm('The username or password you entered does not match our records.');
         }
         }})
         .catch(err => {
