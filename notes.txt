@@ -9,32 +9,27 @@ red: #670404
     
  ==>  
     
-   debugging resend verification link process routes /resendproviderverification and /verifyprovider
+   
 
 
     
 =====>
 
-
+    1) work on the forgotusername/pw functionality
+    forgot username good,
+    forgot password send email notification good but breaking when you open the link it is not routing to reset password is routing to forgotusernamePw?
     
     
-    4)then wire through the FLOW for the above ^ ie wire through the redirects and verifies, then move on to dash and confirming apts, and twilio
-    and planning everything else
+    2), then mdove on to dash and confirming apts, and twilio
+    and planning everything else  ie. dash/subdash
 
        ===>   
-        fully wire through login verifications and then wire through the routing on reg and test the above compoennts and actions
-        with a logged in user:
-        c
-        make it so users get verified immediately after signup, and then login and if they are not verified they are blocked with a message that sais go verify.
-        if they are verified and not activated route them to secondsignupPage fields are null are routed to secondsignuppage where they will 
-        enter the pics and other fields.  After that to the Addservice page where they can add the services and pricing.  After they have at least 1 s&p
-        sedn to dashboard
-    5) tweak the user app to on bookings display a component with the providers info before booking.  Ie after the search click provider,
+        
+    3) tweak the user app to on bookings display a component with the providers info before booking.  Ie after the search click provider,
     see their details and either click back or click forward to book if you like what you see.
 
-    6) test all the components with the new verification signup login scheme make sure everything works
 
-    7) work on dash/subdash
+   
 
         
 

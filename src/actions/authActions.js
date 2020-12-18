@@ -64,7 +64,7 @@ export const FORGOT_PASSWORD_FAILURE = 'FORGOT_PASSWORD_FAILURE';
 
 export const resetPassword = email => dispatch => {
     dispatch({type: FORGOT_PASSWORD_START});
-    return axios.post('http://localhost:4000/api/auth/forgotproviderpassword', email)
+    return axios.post('http://localhost:4000/api/auth/forgotprovideruserpassword', email)
     .then(res => {
         dispatch({type: FORGOT_PASSWORD_SUCCESS, payload: res})
     })
@@ -96,3 +96,7 @@ export const resendVerification = (body) => dispatch => {
     })
     .catch(err => dispatch({type: RESEND_VERIFICATION_FAILURE, payload: err}))
 }
+
+
+
+
