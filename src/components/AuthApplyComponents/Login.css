@@ -127,6 +127,7 @@ button {
     flex-direction: column;
     width: 100%;
     align-items: center;
+    margin-top: 8%;
   }
 
   .twoFive {
@@ -137,4 +138,3 @@ button {
     text-align: center;
     font-size: 2rem;
 }
- 

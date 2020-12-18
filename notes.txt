@@ -16,6 +16,8 @@ red: #670404
 =====>
 
     1) work on the forgotusername/pw functionality
+    forgot username good,
+    forgot password send email notification good but breaking when you open the link it is not routing to reset password is routing to forgotusernamePw?
     
     
     2), then mdove on to dash and confirming apts, and twilio
