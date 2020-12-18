@@ -103,7 +103,7 @@ export const FORGOT_USERNAME_FAILURE = 'FORGOT_USERNAME_FAILURE';
 
 export const sendUsername = email => dispatch => {
     dispatch({type: FORGOT_USERNAME_START});
-    return axios.post('http://localhost:4000/api/auth/forgotusername', email)
+    return axios.post('http://localhost:4000/api/auth/forgotproviderusername', email)
     .then(res => {
         dispatch({type: FORGOT_USERNAME_SUCCESS, payload: res})
     })
@@ -116,9 +116,22 @@ export const FORGOT_PASSWORD_FAILURE = 'FORGOT_PASSWORD_FAILURE';
 
 export const resetPassword = email => dispatch => {
     dispatch({type: FORGOT_PASSWORD_START});
-    return axios.post('http://localhost:4000/api/auth/forgotuserpassword', email)
+    return axios.post('http://localhost:4000/api/auth/forgotprovideruserpassword', email)
     .then(res => {
         dispatch({type: FORGOT_PASSWORD_SUCCESS, payload: res})
     })
     .catch(err => dispatch({type: FORGOT_PASSWORD_FAILURE, payload: err}))
+}
+
+export const RESET_PASSWORD_START = 'RESET_PASSWORD_START';
+export const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
+export const RESET_PASSWORD_FAILURE = 'RESET_PASSWORD_FAILURE';
+
+export const resetPasswordFin = (id, body) => dispatch => {
+    dispatch({type: RESET_PASSWORD_START});
+    return axiosWithAuth().put(`http://localhost:4000/api/providers/${id}`, body)
+    .then(res => {
+        dispatch({type: RESET_PASSWORD_SUCCESS, payload: res})
+    })
+    .catch(err => dispatch({type: RESET_PASSWORD_FAILURE, payload: err}))
 }
