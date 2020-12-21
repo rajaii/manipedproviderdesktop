@@ -15,18 +15,27 @@ red: #670404
     
 =====>
 
-    1) work on the forgotusername/pw functionality
-    forgot username good,
-    forgot password send email notification good but breaking when you open the link it is not routing to reset password is routing to forgotusernamePw?
-    
-    
-    2), then mdove on to dash and confirming apts, and twilio
+  
+    1), then mdove on to dash and confirming apts, and twilio
     and planning everything else  ie. dash/subdash
 
-       ===>   
+       ===>   Dash:
+       main page with appointments on top confirm apts
+       under those upcoming confirmed
+       chat button on every apt to chat with user
+       rate button to rate user open like on user app
+       button to add services
+       button to show/update showcase
+       somewhere to add payment info
+       profile tabl
+       log out.
+
+       
         
-    3) tweak the user app to on bookings display a component with the providers info before booking.  Ie after the search click provider,
+    2) tweak the user app to on bookings display a component with the providers info before booking.  Ie after the search click provider,
     see their details and either click back or click forward to book if you like what you see.
+
+    3) login route needs to be debuggged via chrome again.  
 
 
    
