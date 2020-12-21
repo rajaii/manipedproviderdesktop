@@ -7,7 +7,7 @@ import Register from './components/AuthApplyComponents/Register.js';
 import SecondSignupPage from './components/AuthApplyComponents/SecondSignupPage.js';
 import Login from './components/AuthApplyComponents/Login.js';
 import ForgotUsernamePw from './components/AuthApplyComponents/ForgotUsernamePw.js';
-import ResetPassword from './components/AuthApplyComponents/ForgotUsernamePw.js';
+import ResetPassword from './components/AuthApplyComponents/ResetPassword.js';
 import NotVerified from './components/AuthApplyComponents/NotVerified.js';
 import PreDash from './components/AuthApplyComponents/PreDash.js';
 // import DashBoard from './components/Dashboard/DashBoard.js';
