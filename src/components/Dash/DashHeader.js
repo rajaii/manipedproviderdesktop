@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import {DashHeaderSub} from './DashHeaderSub.js';
+import DashHeaderSub from './DashHeaderSub.js';
 import { fetchProfile } from '../../actions/appActions.js';
 import { logout } from '../../actions/authActions.js';
 import '../Nav.css';
@@ -58,7 +58,7 @@ class DashHeader extends React.Component {
             </div>
             
             <div>
-                <DashHeaderSub/>
+                <DashHeaderSub usersInfo={this.props.usersInfo}/>
             </div>
             
 
