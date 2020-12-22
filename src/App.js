@@ -10,8 +10,8 @@ import ForgotUsernamePw from './components/AuthApplyComponents/ForgotUsernamePw.
 import ResetPassword from './components/AuthApplyComponents/ResetPassword.js';
 import NotVerified from './components/AuthApplyComponents/NotVerified.js';
 import PreDash from './components/AuthApplyComponents/PreDash.js';
-// import DashBoard from './components/Dashboard/DashBoard.js';
-// import DashHeader from './components/Dashboard/DashHeader.js';
+import DashBoard from './components/Dash/DashBoard.js';
+import DashHeader from './components/Dash/DashHeader.js';
 // import PrivateRoute from './components/PrivateRoute.js';
 // import CardSetupForm from './components/Payments/CardSetupForm.js';
 import './App.css';
@@ -33,6 +33,7 @@ class App extends React.Component {
             <Route exact path='/resetpassword' render={(props) => <ResetPassword {...props} />}></Route>
             <Route exact path='/notverified' render={(props) => <NotVerified {...props} />}></Route>
             <Route exact path='/predash' render={(props) => <PreDash {...props} />}></Route>
+            <Route exact path='/dashboard' render={(props) => <DashBoard {...props} />}></Route>
             {/* <PrivateRoute exact path='/dashboard' component={DashBoard} ></PrivateRoute>
             <PrivateRoute exact path='/cardsetupform' component={CardSetupForm}></PrivateRoute> */}
             
