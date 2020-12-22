@@ -20,15 +20,23 @@ red: #670404
     and planning everything else  ie. dash/subdash
 
        ===>   Dash:
+       headSub:
+        button to add services
+        button to show/update showcase
+        somewhere to add payment info
+        profile tabl
+
        main page with appointments on top confirm apts
        under those upcoming confirmed
-       chat button on every apt to chat with user
-       rate button to rate user open like on user app
-       button to add services
-       button to show/update showcase
-       somewhere to add payment info
-       profile tabl
-       log out.
+
+       within the apt cards:
+        chat button on every apt to chat with user
+        rate button to rate user open like on user app
+       
+       
+       
+      
+       
 
        
         
