@@ -39,7 +39,9 @@ class Login extends React.Component {
             password: this.state.password
         }
         e.preventDefault();
+        console.log(this.state.validationError)
         loginSchema.validate(this.state, {abortEarly: false})
+        
         .then(async d => {
             if (d) {
             let res = await this.props.login(body)
@@ -63,36 +65,29 @@ class Login extends React.Component {
                 });
             }
             //if they are not using proper creds
-            else if (res != undefined && res.payload.data.message === 'Invalid Credentials') {
+            else if ((res != undefined && res.payload.data.message === 'Invalid Credentials')) {
                 this.setState({
                     username: '',
                     password: ''
                 });
-                window.confirm('The username or password you entered does not match our records.');
+                window.confirm('The username and/sor password you entered does not match our records.');
             }
+
             
 
-            //they are verified, account appication complete, and activated and ready to visit either dash
-            else if (res.payload.data.token != undefined) {
+        //they are verified, account appication complete, and activated and ready to visit either dash
+
+        else {
             this.setState({
                 username: '',
                 password: ''
             })
             const id = localStorage.getItem('uID');
             
-            this.props.history.push('/dashboard')
-        }
-
-        else {
-            this.setState({
-                username: '',
-                password: ''
-            });
-            window.confirm('The username or password you entered does not match our records.');
-        }
-        }})
+            this.props.history.push('/dashboard');
+            
+            }}})
         .catch(err => {
-             
              this.setState({
                 validationError: err
             })

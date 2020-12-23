@@ -15,12 +15,19 @@ function DashHeaderSub(props) {
         props.history.push('/predash');
     }
 
+    function handleProfileClick () {
+        setState({
+            profile: true
+        })
+        console.log(state.profile)
+    }
+
 
     return (
         <div>
 
             <div className='dashSub'>
-                <p className='butn'>Profile</p>
+                <p onClick={handleProfileClick} className='butn'>Profile</p>
                 <p className='butn'>Add Bank Info</p>
                 <p onClick={handleServiceClick} className='butn'>Add Services</p>
                 <p className='butn'>Showcase</p>
