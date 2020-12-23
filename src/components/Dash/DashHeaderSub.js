@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { Profile } from './Profile.js';
-import { Showcase } from './Showcase.js';
+import Showcase from './Showcase.js';
 import '../../components/Nav.css';
 
 function DashHeaderSub(props) {
@@ -40,7 +40,7 @@ function DashHeaderSub(props) {
             </div>
 
             {state.profile && <Profile usersInfo={props.usersInfo} />}
-            {state.showcase && <Showcase />}
+            {state.showcase && <Showcase usersInfo={props.usersInfo}/>}
 
         </div>
     )
