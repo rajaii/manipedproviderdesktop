@@ -43,10 +43,6 @@ export const addService = (service, body) => dispatch => {
     .catch(err => dispatch({type: ADD_SERVICE_FAILURE, payload: err.response}))
 }
 
-// export const FETCH_SERVICES_START = 'FETCH_SERVICES_START';
-// export const FETCH_SERVICES_SUCCESS = 'FETCH_SERVICES_SUCCESS';
-// export const FETCH_SERVICES_FAILURE = 'FETCH_SERVICES_FAILURE';
-
 
 export const fetchServices = (service, type) => dispatch => {
     dispatch({type: `FETCH_${type}_START`});
@@ -56,3 +52,6 @@ export const fetchServices = (service, type) => dispatch => {
     })
     .catch(err => dispatch({type: `FETCH_${type}_FAILURE`, payload: err.response}))
 }
+
+
+

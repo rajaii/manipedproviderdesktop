@@ -70,7 +70,7 @@ class DashHeader extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        userInfo: state.providerUserInfoReducer.usersInfo,
+        usersInfo: state.providerUserInfoReducer.usersInfo,
         isLoggedIn: state.loginReducer.isLoggedIn,
     }
 }

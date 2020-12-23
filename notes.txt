@@ -45,6 +45,9 @@ red: #670404
 
     3) login route needs to be debuggged via chrome again.  
 
+    4) add error messages confirms in client user app on login process, go through and make responsive and add errors everywhere from api's given 
+    errors so clients have better experieince
+
 
    
 
