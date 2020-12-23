@@ -17,9 +17,15 @@ function DashHeaderSub(props) {
 
     function handleProfileClick () {
         setState({
-            profile: true
+            profile: !state.profile
         })
         console.log(state.profile)
+    }
+
+    function handleShowcaseClick () {
+        setState({
+            showcase: !state.showcase
+        })
     }
 
 
@@ -30,7 +36,7 @@ function DashHeaderSub(props) {
                 <p onClick={handleProfileClick} className='butn'>Profile</p>
                 <p className='butn'>Add Bank Info</p>
                 <p onClick={handleServiceClick} className='butn'>Add Services</p>
-                <p className='butn'>Showcase</p>
+                <p onClick={handleShowcaseClick} className='butn'>Showcase</p>
             </div>
 
             {state.profile && <Profile usersInfo={props.usersInfo} />}
