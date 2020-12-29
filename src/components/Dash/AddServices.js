@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { editProfile, fetchServices } from '../../actions/appActions.js';
+import { fetchServices } from '../../actions/appActions.js';
 import AddServicesAndPricing from './AddServicesAndPricing.js';
 import ServicesAdded from './ServicesAdded.js';
 import './Register.css';
