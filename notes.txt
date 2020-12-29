@@ -21,8 +21,10 @@ red: #670404
 
        ===>   Dash:
        headSub:
-        button to add services
-        button to show/update showcase
+        button to add services DONE w component
+        
+     HERE ==>  make different components for editing showcase and adding services that separate the 2 separate from in dash; add ability to 
+     name the images in the old one and new one.
         somewhere to add payment info
         profile tabl
 
