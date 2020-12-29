@@ -114,3 +114,9 @@
     color: white;
     font-family: fantasy;
 }
+
+.showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

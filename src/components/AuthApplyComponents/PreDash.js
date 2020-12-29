@@ -33,9 +33,9 @@ class PreDash extends React.Component {
         this.closeSNP = this.closeSNP.bind(this);
     }
 
+    
     handleAdd = e => {
         e.preventDefault();
-        console.log(e.target.name)
         this.setState({
             [e.target.name]: {
                 ...this.state[e.target.name],
@@ -202,6 +202,7 @@ class PreDash extends React.Component {
 
         return (
             <div className='serviceButtons'>
+                <h1>Here you can add specifics on your nail, hair, and massage services offered:</h1>
                 {this.state.nails_services.openSNPList &&  this.props.nailsServices.map(n => {
                    return <ServicesAdded type="nails service" service={n.service} price={n.price}/>
                 })}
