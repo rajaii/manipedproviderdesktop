@@ -33,9 +33,9 @@ class PreDash extends React.Component {
         this.closeSNP = this.closeSNP.bind(this);
     }
 
+    
     handleAdd = e => {
         e.preventDefault();
-        console.log(e.target.name)
         this.setState({
             [e.target.name]: {
                 ...this.state[e.target.name],

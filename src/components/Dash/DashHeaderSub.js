@@ -3,16 +3,21 @@ import { withRouter } from 'react-router-dom';
 
 import { Profile } from './Profile.js';
 import Showcase from './Showcase.js';
+import AddServices from './AddServices.js';
 import '../../components/Nav.css';
+
 
 function DashHeaderSub(props) {
     const [state, setState] = useState({
         profile: false,
         showcase: false,
+        services: false
     })
 
     function handleServiceClick () {
-        props.history.push('/predash');
+        setState({
+            services: !state.services
+        })
     }
 
     function handleProfileClick () {
@@ -41,6 +46,7 @@ function DashHeaderSub(props) {
 
             {state.profile && <Profile usersInfo={props.usersInfo} />}
             {state.showcase && <Showcase usersInfo={props.usersInfo}/>}
+            {state.services && <AddServices/>}
 
         </div>
     )
