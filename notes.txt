@@ -23,8 +23,10 @@ red: #670404
        headSub:
         button to add services DONE w component
         
-     HERE ==>  make different components for editing showcase and adding services that separate the 2 separate from in dash; add ability to 
-     name the images in the old one and new one.
+     HERE ==>  
+        A) make different components for editing showcase and adding services that separate the 2 separate from in dash;
+        B) add ability to name the images in the old one and new one.
+        
         somewhere to add payment info
         profile tabl
 
@@ -45,10 +47,18 @@ red: #670404
     2) tweak the user app to on bookings display a component with the providers info before booking.  Ie after the search click provider,
     see their details and either click back or click forward to book if you like what you see.
 
-    3) login route needs to be debuggged via chrome again.  
+    3) login route needs to be debuggged via chrome again on user app.  
 
     4) add error messages confirms in client user app on login process, go through and make responsive and add errors everywhere from api's given 
     errors so clients have better experieince
+
+    5) make both responsive
+
+    6) deploy
+
+    7) move to native
+
+    8) comment code that wasn't before commented
 
 
    
