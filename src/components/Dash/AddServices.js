@@ -30,6 +30,7 @@ function AddServices(props) {
     function handleAdd (e) {
         e.preventDefault();
         setState({
+            ...state,
             [e.target.name]: {
                 ...state[e.target.name],
                 openForm: true,
@@ -55,7 +56,7 @@ function AddServices(props) {
     }
 
     return (
-        <div>
+        <div className='aSCont'>
                 <h1>Here you can add specifics on your nail, hair, and massage services offered:</h1>
                 {state.nails_services.openSNPList &&  props.nailsServices.map(n => {
                    return <ServicesAdded type="nails service" service={n.service} price={n.price}/>
