@@ -120,3 +120,13 @@
     flex-direction: column;
     align-items: center;
 }
+
+.workImg {
+    width: 50%;
+}
+
+.imgCont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -158,7 +158,7 @@ function Showcase(props) {
             <h1>These are your work images that your clients will see in your profile:</h1>
             {props.usersInfo.work_image_url_1 != null && 
             (
-            <div>
+            <div className='imgCont'>
                 
                 <PhotoDisplay usersInfo={props.usersInfo} num='1'/>
                 <button onClick={() => showWidget(photo1Widget)} className="cloudinary-button">Change Photo</button>
@@ -170,7 +170,7 @@ function Showcase(props) {
            
             {props.usersInfo.work_image_url_2 != null &&
             (
-                <div>
+                <div className='imgCont'>
                     
                     <PhotoDisplay usersInfo={props.usersInfo} num='2'/>
                     <button onClick={() => showWidget(photo2Widget)} className="cloudinary-button">Change Photo</button>
@@ -180,7 +180,7 @@ function Showcase(props) {
             }
 
             {props.usersInfo.work_image_url_3 != null &&(
-            <div>
+            <div className='imgCont'>
                 
                 <PhotoDisplay usersInfo={props.usersInfo} num='3'/>
                 <button onClick={() => showWidget(photo3Widget)} className="cloudinary-button">Change Photo</button>
@@ -191,7 +191,7 @@ function Showcase(props) {
 
             {props.usersInfo.work_image_url_4 != null &&
             (
-                <div>
+                <div className='imgCont'>
                     
                     <PhotoDisplay usersInfo={props.usersInfo} num='4'/>
                     <button onClick={() => showWidget(photo4Widget)} className="cloudinary-button">Change Photo</button>
@@ -201,7 +201,7 @@ function Showcase(props) {
             }
 
             {props.usersInfo.work_image_url_5 != null &&(
-            <div>
+            <div className='imgCont'>
                 
                 <PhotoDisplay usersInfo={props.usersInfo} num='5'/>
                 <button onClick={() => showWidget(photo5Widget)} className="cloudinary-button">Change Photo</button>
@@ -211,7 +211,7 @@ function Showcase(props) {
             }
 
             {props.usersInfo.work_image_url_6 != null &&(
-            <div>
+            <div className='imgCont'>
                 
                 <PhotoDisplay usersInfo={props.usersInfo} num='6'/>
                 <button onClick={() => showWidget(photo6Widget)} className="cloudinary-button">Change Photo</button>
@@ -221,7 +221,7 @@ function Showcase(props) {
             }
 
             {props.usersInfo.work_image_url_7 != null && (
-            <div>
+            <div className='imgCont'>
                 
                 <PhotoDisplay usersInfo={props.usersInfo} num='7'/>
                 <button onClick={() => showWidget(photo7Widget)} className="cloudinary-button">Change Photo</button>
@@ -231,7 +231,7 @@ function Showcase(props) {
             }
 
             {props.usersInfo.work_image_url_8 != null && (
-            <div>
+            <div className='imgCont'>
                 
                 <PhotoDisplay usersInfo={props.usersInfo} num='8'/>
                 <button onClick={() => showWidget(photo8Widget)} className="cloudinary-button">Change Photo</button>
@@ -252,9 +252,9 @@ function Showcase(props) {
 
 function PhotoDisplay(props) {
     return (
-            <div>
+            <div className='imgCont'>
                 <p>Name of image: {eval(`props.usersInfo.work_image_url_${props.num}_name`)}</p> 
-                <img src={eval(`props.usersInfo.work_image_url_${props.num}`)}/>
+                <img className="workImg" src={eval(`props.usersInfo.work_image_url_${props.num}`)}/>
             </div>
     )
 }
