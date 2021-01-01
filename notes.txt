@@ -25,7 +25,11 @@ red: #670404
         
       ==>  
         A) make different components for editing showcase ;
-     HERE   ==> See Showcase.js line 11
+     HERE   ==> Having an issue with how to go about making the name add form.  want to keep db same so will make a form component conditionally rendered
+     with donditionals in the handleclick to show wich body the action will be. ie if (props.num == work_image_url_1_name) {
+         body = (work_image_url_1_name: state.name)
+         
+     }
 
         B) add ability to name the images in the predash .
         
